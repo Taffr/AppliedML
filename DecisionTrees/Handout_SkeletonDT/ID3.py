@@ -70,13 +70,12 @@ class ID3DecisionTreeClassifier:
             total += 1
 
         for classification in classificationMap:
-            setEntropy += self.__entropy(classificationMap[classification], total)
+            setEntropy += self.__entropy(classificationMap[classification] / total)
 
         self.__findBestAttribute(setEntropy)
         return setEntropy
 
-    def __entropy(self, number, total):
-        probability = number / total
+    def __entropy(self, probability):
         return - probability * math.log(probability, 2)
 
     def __attributeInformationGain(self, mapOfValues, setEntropy):
@@ -87,9 +86,13 @@ class ID3DecisionTreeClassifier:
 
         for attrClass in mapOfValues:
             attrClassInfo[attrClass] = {}
+            attrClassInfo[attrClass]["P(" + attrClass + ")"] = sum(mapOfValues[attrClass].values()) / dataTotal
             for classification in self.classifications:
-                attrClassInfo[attrClass]["eventCorrect:" + classification] = 0
-        print(informationGain - attributeEntropy)
+                attrClassInfo[attrClass]["P(" + classification + ")"] = mapOfValues[attrClass][classification] / sum(mapOfValues[attrClass].values())
+                pAttrClass = attrClassInfo[attrClass]["P(" + attrClass + ")"]
+                pClassification = attrClassInfo[attrClass]["P(" + classification + ")"]
+                attributeEntropy += pAttrClass * self.__entropy(pClassification)
+
         return informationGain - attributeEntropy
 
     def __findBestAttribute(self, setEntropy):
@@ -118,8 +121,10 @@ class ID3DecisionTreeClassifier:
 
         print("-------------------")
         attributeScores = {}
-        # /for attr in attributeMapMapMap:
-        self.__attributeInformationGain(attributeMapMapMap["attr0"], setEntropy)
+        for attr in attributeMapMapMap:
+            attributeScores[attr] = self.__attributeInformationGain(attributeMapMapMap[attr], setEntropy)
+
+        print(attributeScores)
 
     # the entry point for the recursive ID3-algorithm, you need to fill in the calls to your recursive implementation
     def fit(self, data, target, attributes, classes):
