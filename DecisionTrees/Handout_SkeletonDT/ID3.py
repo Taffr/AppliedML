@@ -20,7 +20,7 @@ class ID3DecisionTreeClassifier:
 
     # Create a new node in the tree with the suggested attributes for the visualisation.
     # It can later be added to the graph with the respective function
-    def newID3Node(self, label=None, attribute=None, entropy=None, samples=None, classes=[], nodes=None):
+    def newID3Node(self, label=None, attribute=None, entropy=None, samples=None, classes=[], nodes=[]):
         node = {'id': self.nodeCounter, 'label': label, 'attribute': attribute, 'entropy': entropy, 'samples': samples,
                 'classes': classes, 'nodes': nodes}
 
@@ -41,7 +41,7 @@ class ID3DecisionTreeClassifier:
 
         print(nodeString)
 
-        return
+        return node
 
     # make the visualisation available
     def makeDotData(self):
@@ -64,21 +64,21 @@ class ID3DecisionTreeClassifier:
                 for key in attributes.keys():
                     if samples[row][col] in attributes[key]:
                         attributeMapMapMap[key][samples[row][col]][target[row]] += 1
-        print(attributeMapMapMap)
         attrEntropy = {}
+        print(target)
+        print(attributeMapMapMap)
         total = len(samples)
         for attr in attributeMapMapMap:
             attrEntropy[attr] = 0
             for v in attributeMapMapMap[attr].keys():
                 valueCount = sum(attributeMapMapMap[attr][v].values())
-                attrEntropy[attr] += math.fabs((valueCount / total) * self.__entropy(attributeMapMapMap[attr][v]))
+                attrEntropy[attr] += (valueCount / total) * self.__entropy(attributeMapMapMap[attr][v])
 
         # Change this to make some more sense
         bestAttribute = ""
         highestIG = 0
 
         for attr in attrEntropy:
-            print(attr, stateEntropy - attrEntropy[attr])
             if (stateEntropy - attrEntropy[attr]) > highestIG:
                 bestAttribute = attr
                 highestIG = stateEntropy - attrEntropy[attr]
@@ -92,7 +92,6 @@ class ID3DecisionTreeClassifier:
             entropy += probability * math.log(probability, 2)
         return -entropy
 
-    # def __findHighestInfo(self, entropy, usedAttributes):
 
     # the entry point for the recursive ID3-algorithm, you need to fill in the calls to your recursive implementation
     def fit(self, data, target, attributes, classes):
@@ -115,29 +114,32 @@ class ID3DecisionTreeClassifier:
 
         # Remove the attribute that offers highest IG from the set of attributes
         self.classes = classes
-        root = self.__buildTree(data, target, None, attributes)
+        self.attributeIndex = {}
+        index = 0
+        for key in attributes:
+            self.attributeIndex[key] = index
+            index += 1
+        root = self.__buildTree(data, target, attributes)
         self.addNodeToGraph(root)
-        # self.usedAttributes.append(attributeName)
         return root
 
-    def __buildTree(self, samples, target, targetAttribute, attributes):
+    def __buildTree(self, samples, target, attributes):
         root = self.newID3Node()
         allSameClass = True
         lastClass = ""
-        for classification in target:
-            if lastClass != classification and lastClass != "":
+        for index in range(len(target)):
+            if lastClass != target[index] and lastClass != "":
                 allSameClass = False
                 break
-            lastClass = classification
+            lastClass = target[index]
 
         if allSameClass:
             root["label"] = lastClass
             root["entropy"] = 0.0
-            root["samples"] = len(samples)
-            root["classCount"] = {lastClass: len(target)}
+            root["samples"] = len(target)
             return root
 
-        if len(attributes) < 1:
+        if len(attributes) <= 1:
             classCounter = {}
             for classification in target:
                 try:
@@ -163,27 +165,52 @@ class ID3DecisionTreeClassifier:
                     classCounter[classification] += 1
                 except:
                     classCounter[classification] = 1
+            for classification in classCounter.keys():
+                if classCounter[classification] == 0:
+                    root["label"] = "test"
+                    root["entropy"] = 0.0
+                    root["samples"] = 999
+                    root["classCount"] = classCounter
+                    return root
 
             stateEntropy = self.__entropy(classCounter)
 
             root["entropy"] = stateEntropy
             root["classCount"] = classCounter
             root["samples"] = len(samples)
-
             # select target_attribute from highest IG
             bestAttribute = self.findSplitAttr(stateEntropy, samples, target, attributes)
-            print(bestAttribute)
+            root["attribute"] = bestAttribute
+            root["classes"] = attributes[bestAttribute]
 
-        # else:
-        # givet nodes attribut ta dess class
-        # hitta nya counters givet nodes attribut och klassifikation
-        # räkna ut ny entropi
-        # om entropin == 0
-        # gör denna nod till ett löv
-        # annars hitta det bästa nya attributet
-        # gör denna noden till det attributet
-        # rekrusivt...
-        return root
+            subSets = {}
+            for value in attributes[bestAttribute]:
+                subSets[value] = {"samples": [], "target": []}
+                for rowIndex in range(len(samples)):
+                    if value == samples[rowIndex][self.attributeIndex[bestAttribute]]:
+                        subSets[value]["samples"].append(samples[rowIndex])
+                        subSets[value]["target"].append(target[rowIndex])
+
+            del attributes[bestAttribute]
+            for v in subSets:
+                if len(subSets[v]["samples"]) < 1:
+                    counter = {}
+                    for c in subSets[v]["target"]:
+                        try:
+                            counter[c] += 1
+                        except:
+                            counter[c] = 1
+                    maxCount = 0
+                    maxLabel = ""
+                    for key in counter:
+                        if counter[key].value() >= maxCount:
+                            maxCount = counter[key].value()
+                            maxLabel = key
+                    root["nodes"].append(self.newID3Node(maxLabel))
+                    return root
+                else:
+                    root["nodes"].append(self.__buildTree(subSets[v]["samples"], subSets[v]["target"], attributes))
+                    return root
 
     def predict(self, data, tree):
         predicted = list()
