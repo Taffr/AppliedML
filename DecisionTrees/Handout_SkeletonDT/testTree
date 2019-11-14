@@ -1,9 +1,58 @@
 // The Decision Tree
 digraph {
+	2 [label="
+id: 2
+label: +
+entropy: 0.0
+samples: 6
+classes: []"]
+	3 -> 2
+	3 [label="
+id: 3
+label: +
+entropy: 0.0
+samples: 2
+classes: []"]
+	4 -> 3
+	1 [label="
+id: 1
+attribute: shape
+entropy: 0.8112781244591328
+samples: 8
+classes: ['r', 'i']"]
+	4 -> 1
+	5 [label="
+id: 5
+label: -
+entropy: 0.0
+samples: 7
+classes: []"]
+	6 -> 5
+	6 [label="
+id: 6
+label: -
+entropy: 0.0
+samples: 1
+classes: []"]
+	7 -> 6
+	4 [label="
+id: 4
+attribute: color
+entropy: 0.9544340029249649
+samples: 8
+classes: ['y', 'g']"]
+	7 -> 4
 	0 [label="
 id: 0
+attribute: size
 entropy: 0.9886994082884974
 samples: 16
-classes: []
-classCount: {'+': 9, '-': 7}"]
+classes: ['s', 'l']"]
+	7 -> 0
+	0 [label="
+id: 0
+attribute: size
+entropy: 0.9886994082884974
+samples: 16
+classes: ['s', 'l']"]
 }

@@ -1,4 +1,3 @@
-from collections import Counter
 from graphviz import Digraph
 import math
 
@@ -54,19 +53,20 @@ class ID3DecisionTreeClassifier:
         # Create each map that should go in the MapMapMap
         for attr in attributes:
             attributeMapMapMap[attr] = {}
-            for value in attributes[attr]:
-                attributeMapMapMap[attr][str(value)] = {}
-                for classification in self.classes:
-                    attributeMapMapMap[attr][str(value)][classification] = 0
+        for row in range(len(samples)):
+            for col in range(len(samples[0])):  # What if missing values?
+                if self.attributeIndex[col] in attributes:
+                    attributeMapMapMap[self.attributeIndex[col]][samples[row][col]] = {}  # Only adds present values in current samples
 
         for row in range(len(samples)):
             for col in range(len(samples[0])):  # What if missing values?
-                for key in attributes.keys():
-                    if samples[row][col] in attributes[key]:
-                        attributeMapMapMap[key][samples[row][col]][target[row]] += 1
-        attrEntropy = {}
-        print(target)
+                if self.attributeIndex[col] in attributes:
+                    try:
+                        attributeMapMapMap[self.attributeIndex[col]][samples[row][col]][target[row]] += 1
+                    except:
+                        attributeMapMapMap[self.attributeIndex[col]][samples[row][col]][target[row]] = 1
         print(attributeMapMapMap)
+        attrEntropy = {}
         total = len(samples)
         for attr in attributeMapMapMap:
             attrEntropy[attr] = 0
@@ -92,32 +92,15 @@ class ID3DecisionTreeClassifier:
             entropy += probability * math.log(probability, 2)
         return -entropy
 
-
     # the entry point for the recursive ID3-algorithm, you need to fill in the calls to your recursive implementation
     def fit(self, data, target, attributes, classes):
-        # Add the different target classifications to a list
-
-        # fill in something more sensible here... root should become the output of the recursive tree creation
-        # ID3 Algorithm will perform following tasks recursively:
-
-        # Create a root node for the tree
-
-        # If all examples are positive, return leaf node ‘positive’
-
-        # Else if all examples are negative, return leaf node ‘negative’
-
-        # Calculate the entropy of current state E(S)
-
-        # For each attribute, calculate the entropy with respect to the attribute ‘A’ denoted by E(S, A)
-
-        # Select the attribute which has the maximum value of IG(S, A) and split the current (parent) node on the selected attribute
-
-        # Remove the attribute that offers highest IG from the set of attributes
         self.classes = classes
         self.attributeIndex = {}
+        self.indexOfAttribute = {}
         index = 0
         for key in attributes:
-            self.attributeIndex[key] = index
+            self.indexOfAttribute[key] = index
+            self.attributeIndex[index] = key
             index += 1
         root = self.__buildTree(data, target, attributes)
         self.addNodeToGraph(root)
@@ -137,6 +120,7 @@ class ID3DecisionTreeClassifier:
             root["label"] = lastClass
             root["entropy"] = 0.0
             root["samples"] = len(target)
+            self.addNodeToGraph(root, self.nodeCounter)
             return root
 
         if len(attributes) <= 1:
@@ -156,7 +140,7 @@ class ID3DecisionTreeClassifier:
             root["label"] = mostCommon
             root["entropy"] = 0.0
             root["samples"] = sum(classCounter.values())
-            root["classCount"] = classCounter
+            self.addNodeToGraph(root, self.nodeCounter)
             return root
         else:
             classCounter = {}
@@ -165,18 +149,9 @@ class ID3DecisionTreeClassifier:
                     classCounter[classification] += 1
                 except:
                     classCounter[classification] = 1
-            for classification in classCounter.keys():
-                if classCounter[classification] == 0:
-                    root["label"] = "test"
-                    root["entropy"] = 0.0
-                    root["samples"] = 999
-                    root["classCount"] = classCounter
-                    return root
-
             stateEntropy = self.__entropy(classCounter)
 
             root["entropy"] = stateEntropy
-            root["classCount"] = classCounter
             root["samples"] = len(samples)
             # select target_attribute from highest IG
             bestAttribute = self.findSplitAttr(stateEntropy, samples, target, attributes)
@@ -187,11 +162,16 @@ class ID3DecisionTreeClassifier:
             for value in attributes[bestAttribute]:
                 subSets[value] = {"samples": [], "target": []}
                 for rowIndex in range(len(samples)):
-                    if value == samples[rowIndex][self.attributeIndex[bestAttribute]]:
+                    if value == samples[rowIndex][self.indexOfAttribute[bestAttribute]]:
                         subSets[value]["samples"].append(samples[rowIndex])
                         subSets[value]["target"].append(target[rowIndex])
 
-            del attributes[bestAttribute]
+            newAttributes = {}
+            for attribute in attributes.keys():
+                if attribute != bestAttribute:
+                    newAttributes[attribute] = attributes[attribute]
+
+            print(newAttributes)
             for v in subSets:
                 if len(subSets[v]["samples"]) < 1:
                     counter = {}
@@ -206,12 +186,11 @@ class ID3DecisionTreeClassifier:
                         if counter[key].value() >= maxCount:
                             maxCount = counter[key].value()
                             maxLabel = key
-                    root["nodes"].append(self.newID3Node(maxLabel))
-                    return root
+                    self.addNodeToGraph(self.newID3Node(maxLabel), self.nodeCounter)
                 else:
-                    root["nodes"].append(self.__buildTree(subSets[v]["samples"], subSets[v]["target"], attributes))
-                    return root
-
+                    self.__buildTree(subSets[v]["samples"], subSets[v]["target"], newAttributes)
+        self.addNodeToGraph(root, self.nodeCounter)
+        return root
     def predict(self, data, tree):
         predicted = list()
 

@@ -1,4 +1,3 @@
-rom collections import Counter
 from graphviz import Digraph
 import math
 
@@ -126,6 +125,7 @@ class ID3DecisionTreeClassifier:
         total = sum(classCount.values())
         for key in classCount.keys():
             probability = classCount[key] / total
+            print(probability)
             entropy += probability * math.log(probability, 2)
         return -entropy
 
