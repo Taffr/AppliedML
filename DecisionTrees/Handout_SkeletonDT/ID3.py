@@ -20,9 +20,9 @@ class ID3DecisionTreeClassifier:
 
     # Create a new node in the tree with the suggested attributes for the visualisation.
     # It can later be added to the graph with the respective function
-    def newID3Node(self, label=None, attribute=None, entropy=None, samples=None, classCount=None, nodes=None):
+    def newID3Node(self, label=None, attribute=None, entropy=None, samples=None, classes=[], nodes=None):
         node = {'id': self.nodeCounter, 'label': label, 'attribute': attribute, 'entropy': entropy, 'samples': samples,
-                'classCounts': classCount, 'nodes': nodes}
+                'classes': classes, 'nodes': nodes}
 
         self.nodeCounter += 1
         return node
@@ -49,101 +49,47 @@ class ID3DecisionTreeClassifier:
 
     # For you to fill in; Suggested function to find the best attribute to split with, given the set of
     # remaining attributes, the currently evaluated data and target.
-    def findSplitAttr(self):
+    def findSplitAttr(self, stateEntropy, samples, target, attributes):
+        attributeMapMapMap = {}
+        # Create each map that should go in the MapMapMap
+        for attr in attributes:
+            attributeMapMapMap[attr] = {}
+            for value in attributes[attr]:
+                attributeMapMapMap[attr][str(value)] = {}
+                for classification in self.classes:
+                    attributeMapMapMap[attr][str(value)][classification] = 0
+
+        for row in range(len(samples)):
+            for col in range(len(samples[0])):  # What if missing values?
+                for key in attributes.keys():
+                    if samples[row][col] in attributes[key]:
+                        attributeMapMapMap[key][samples[row][col]][target[row]] += 1
+        print(attributeMapMapMap)
+        attrEntropy = {}
+        for attr in attributeMapMapMap:
+            attrEntropy[attr] = 0
+            for value in attributeMapMapMap[attr].keys():
+                for classification in attributeMapMapMap[attr][value]:
+                    attrEntropy[attr] = attributeMapMapMap[attr][value][classification] / sum(
+                        attributeMapMapMap[attr][value].values()) * self.__entropy(attributeMapMapMap[attr][value])
 
         # Change this to make some more sense
-        return None
+        for attr in attrEntropy:
+            print(stateEntropy - attrEntropy[attr])
+        # return attributeEntropy
 
-    def __calculateRoot(self):
-        self.classifications = []
-        for value in self.target:
-            if value not in self.classifications:
-                self.classifications.append(value)
+    def __entropy(self, classCount):
+        entropy = 0
+        total = sum(classCount.values())
+        for key in classCount.keys():
+            probability = classCount[key] / total
+            entropy += probability * math.log(probability, 2)
+        return -entropy
 
-        # Adds all the classifications to map detailing their freq.
-        setEntropy = 0
-        classificationMap = {}
-        for classification in self.classifications:
-            classificationMap[classification] = 0
-        total = 0
-        for value in self.target:
-            classificationMap[value] += 1
-            total += 1
-
-        for classification in classificationMap:
-            setEntropy += self.__entropy(classificationMap[classification] / total)
-
-        return self.__findBestAttribute(setEntropy)
-
-    def __entropy(self, probability):
-        return - probability * math.log(probability, 2)
-
-    def __attributeInformationGain(self, mapOfValues, setEntropy):
-        informationGain = setEntropy
-        attributeEntropy = 0
-        dataTotal = len(self.data)
-        attrClassInfo = {}
-
-        for attrClass in mapOfValues:
-            attrClassInfo[attrClass] = {}
-            attrClassInfo[attrClass]["P(" + attrClass + ")"] = sum(mapOfValues[attrClass].values()) / dataTotal
-            for classification in self.classifications:
-                attrClassInfo[attrClass]["P(" + classification + ")"] = mapOfValues[attrClass][classification] / sum(mapOfValues[attrClass].values())
-                pAttrClass = attrClassInfo[attrClass]["P(" + attrClass + ")"]
-                pClassification = attrClassInfo[attrClass]["P(" + classification + ")"]
-                attributeEntropy += pAttrClass * self.__entropy(pClassification)
-
-        return informationGain - attributeEntropy
-
-    def __findBestAttribute(self, setEntropy):
-        # Check the length of the row => number of attributes (What do if first row is missing?)
-        numberOfAttributes = len(self.data[0])
-        # Map of Map of Map for each attribute
-        attributeMapMapMap = {}
-        # Create each map that should go in the MapMap
-        for i in range(numberOfAttributes):
-            attributeMapMapMap["attr" + str(i)] = {}
-
-        # Create each map that should go in the MapMapMap
-        for rowIndex in range(len(self.data)):
-            for x in range(numberOfAttributes):
-                # Create a new map for each classification of attribute
-                attributeMapMapMap["attr" + str(x)][str(self.data[rowIndex][x])] = {}
-                # Add classifications
-                for classification in self.classifications:
-                    attributeMapMapMap["attr" + str(x)][str(self.data[rowIndex][x])][classification] = 0
-
-        for row in range(len(self.target)):
-            for i in range(numberOfAttributes):
-                for key in attributeMapMapMap["attr" + str(i)][str(self.data[row][i])].keys():
-                    if key == self.target[row]:
-                        attributeMapMapMap["attr" + str(i)][str(self.data[row][i])][key] += 1
-
-        attributeScores = {}
-        for attr in attributeMapMapMap:
-            attributeScores[attr] = self.__attributeInformationGain(attributeMapMapMap[attr], setEntropy)
-
-        bestAttributeKey = ""
-        bestAttributeIndex = 0
-        index = 0
-        for key in attributeScores:
-            try:
-                if attributeScores[key] > attributeScores[bestAttributeKey]:
-                    bestAttributeKey = key
-                    bestAttributeIndex = index
-            except:
-                bestAttributeKey = key
-            index += 1
-
-        return {"attr" + str(bestAttributeIndex): attributeMapMapMap["attr" + str(bestAttributeIndex)], "e": setEntropy - attributeScores[bestAttributeKey]}
-
+    # def __findHighestInfo(self, entropy, usedAttributes):
 
     # the entry point for the recursive ID3-algorithm, you need to fill in the calls to your recursive implementation
     def fit(self, data, target, attributes, classes):
-        self.data = data
-        self.target = target
-        for index in range(len(self.data)):
-            print(self.data[index], self.target[index])
         # Add the different target classifications to a list
 
         # fill in something more sensible here... root should become the output of the recursive tree creation
@@ -162,18 +108,75 @@ class ID3DecisionTreeClassifier:
         # Select the attribute which has the maximum value of IG(S, A) and split the current (parent) node on the selected attribute
 
         # Remove the attribute that offers highest IG from the set of attributes
-
-        # Repeat until we run out of all attributes, or the decision tree has all leaf nodes.
-        attributeInfo = self.__calculateRoot()
-        attributeName = list(attributeInfo.keys())[0]
-        entropy = attributeInfo["e"]
-        samples = 0
-        classCount = len(list(attributeInfo[attributeName].keys()))
-        for key in attributeInfo[attributeName]:
-            samples += sum(attributeInfo[attributeName][key].values())
-        root = self.newID3Node(None, attributeName, entropy, samples, classCount)
+        self.classes = classes
+        root = self.__buildTree(data, target, None, attributes)
         self.addNodeToGraph(root)
+        # self.usedAttributes.append(attributeName)
+        return root
 
+    def __buildTree(self, samples, target, targetAttribute, attributes):
+        root = self.newID3Node()
+        allSameClass = True
+        lastClass = ""
+        for classification in target:
+            if lastClass != classification and lastClass != "":
+                allSameClass = False
+                break
+            lastClass = classification
+
+        if allSameClass:
+            root["label"] = lastClass
+            root["entropy"] = 0.0
+            root["samples"] = len(samples)
+            root["classCount"] = {lastClass: len(target)}
+            return root
+
+        if len(attributes) < 1:
+            classCounter = {}
+            for classification in target:
+                try:
+                    classCounter[classification] += 1
+                except:
+                    classCounter[classification] = 1
+            maxCount = list(classCounter.values())[0]
+            mostCommon = list(classCounter.keys())[0]
+            for key in classCounter:
+                if classCounter[key] > maxCount:
+                    maxCount = classCounter[key]
+                    mostCommon = key
+
+            root["label"] = mostCommon
+            root["entropy"] = 0.0
+            root["samples"] = sum(classCounter.values())
+            root["classCount"] = classCounter
+            return root
+        else:
+            classCounter = {}
+            for classification in target:
+                try:
+                    classCounter[classification] += 1
+                except:
+                    classCounter[classification] = 1
+
+            stateEntropy = self.__entropy(classCounter)
+
+            root["entropy"] = stateEntropy
+            root["classCount"] = classCounter
+            root["samples"] = len(samples)
+
+            # select target_attribute from highest IG
+            attributeInfo = {}
+            attributeInfo = self.findSplitAttr(stateEntropy, samples, target, attributes)
+
+        # else:
+        # givet nodes attribut ta dess class
+        # hitta nya counters givet nodes attribut och klassifikation
+        # räkna ut ny entropi
+        # om entropin == 0
+        # gör denna nod till ett löv
+        # annars hitta det bästa nya attributet
+        # gör denna noden till det attributet
+        # rekrusivt...
         return root
 
     def predict(self, data, tree):

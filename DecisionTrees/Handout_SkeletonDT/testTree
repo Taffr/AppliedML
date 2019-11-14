@@ -2,8 +2,8 @@
 digraph {
 	0 [label="
 id: 0
-attribute: attr1
-entropy: 0.8828560636920488
+entropy: 0.9886994082884974
 samples: 16
-classCounts: 2"]
+classes: []
+classCount: {'+': 9, '-': 7}"]
 }
