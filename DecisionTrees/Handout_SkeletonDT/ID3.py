@@ -66,17 +66,23 @@ class ID3DecisionTreeClassifier:
                         attributeMapMapMap[key][samples[row][col]][target[row]] += 1
         print(attributeMapMapMap)
         attrEntropy = {}
+        total = len(samples)
         for attr in attributeMapMapMap:
             attrEntropy[attr] = 0
-            for value in attributeMapMapMap[attr].keys():
-                for classification in attributeMapMapMap[attr][value]:
-                    attrEntropy[attr] = attributeMapMapMap[attr][value][classification] / sum(
-                        attributeMapMapMap[attr][value].values()) * self.__entropy(attributeMapMapMap[attr][value])
+            for v in attributeMapMapMap[attr].keys():
+                valueCount = sum(attributeMapMapMap[attr][v].values())
+                attrEntropy[attr] += math.fabs((valueCount / total) * self.__entropy(attributeMapMapMap[attr][v]))
 
         # Change this to make some more sense
+        bestAttribute = ""
+        highestIG = 0
+
         for attr in attrEntropy:
-            print(stateEntropy - attrEntropy[attr])
-        # return attributeEntropy
+            print(attr, stateEntropy - attrEntropy[attr])
+            if (stateEntropy - attrEntropy[attr]) > highestIG:
+                bestAttribute = attr
+                highestIG = stateEntropy - attrEntropy[attr]
+        return bestAttribute
 
     def __entropy(self, classCount):
         entropy = 0
@@ -165,8 +171,8 @@ class ID3DecisionTreeClassifier:
             root["samples"] = len(samples)
 
             # select target_attribute from highest IG
-            attributeInfo = {}
-            attributeInfo = self.findSplitAttr(stateEntropy, samples, target, attributes)
+            bestAttribute = self.findSplitAttr(stateEntropy, samples, target, attributes)
+            print(bestAttribute)
 
         # else:
         # givet nodes attribut ta dess class
