@@ -1,5 +1,9 @@
 // The Decision Tree
 digraph {
 	0 [label="
-id: 0"]
+id: 0
+attribute: attr1
+entropy: 0.8828560636920488
+samples: 16
+classCounts: 2"]
 }

@@ -16,12 +16,13 @@ class ID3DecisionTreeClassifier:
         # suggested attributes of the classifier to handle training parameters
         self.minSamplesLeaf = minSamplesLeaf
         self.minSamplesSplit = minSamplesSplit
+        self.usedAttributes = []
 
     # Create a new node in the tree with the suggested attributes for the visualisation.
     # It can later be added to the graph with the respective function
-    def newID3Node(self):
-        node = {'id': self.nodeCounter, 'label': None, 'attribute': None, 'entropy': None, 'samples': None,
-                'classCounts': None, 'nodes': None}
+    def newID3Node(self, label=None, attribute=None, entropy=None, samples=None, classCount=None, nodes=None):
+        node = {'id': self.nodeCounter, 'label': label, 'attribute': attribute, 'entropy': entropy, 'samples': samples,
+                'classCounts': classCount, 'nodes': nodes}
 
         self.nodeCounter += 1
         return node
@@ -72,8 +73,7 @@ class ID3DecisionTreeClassifier:
         for classification in classificationMap:
             setEntropy += self.__entropy(classificationMap[classification] / total)
 
-        self.__findBestAttribute(setEntropy)
-        return setEntropy
+        return self.__findBestAttribute(setEntropy)
 
     def __entropy(self, probability):
         return - probability * math.log(probability, 2)
@@ -119,12 +119,24 @@ class ID3DecisionTreeClassifier:
                     if key == self.target[row]:
                         attributeMapMapMap["attr" + str(i)][str(self.data[row][i])][key] += 1
 
-        print("-------------------")
         attributeScores = {}
         for attr in attributeMapMapMap:
             attributeScores[attr] = self.__attributeInformationGain(attributeMapMapMap[attr], setEntropy)
 
-        print(attributeScores)
+        bestAttributeKey = ""
+        bestAttributeIndex = 0
+        index = 0
+        for key in attributeScores:
+            try:
+                if attributeScores[key] > attributeScores[bestAttributeKey]:
+                    bestAttributeKey = key
+                    bestAttributeIndex = index
+            except:
+                bestAttributeKey = key
+            index += 1
+
+        return {"attr" + str(bestAttributeIndex): attributeMapMapMap["attr" + str(bestAttributeIndex)], "e": setEntropy - attributeScores[bestAttributeKey]}
+
 
     # the entry point for the recursive ID3-algorithm, you need to fill in the calls to your recursive implementation
     def fit(self, data, target, attributes, classes):
@@ -152,8 +164,14 @@ class ID3DecisionTreeClassifier:
         # Remove the attribute that offers highest IG from the set of attributes
 
         # Repeat until we run out of all attributes, or the decision tree has all leaf nodes.
-        setEntropy = self.__calculateRoot()
-        root = self.newID3Node()
+        attributeInfo = self.__calculateRoot()
+        attributeName = list(attributeInfo.keys())[0]
+        entropy = attributeInfo["e"]
+        samples = 0
+        classCount = len(list(attributeInfo[attributeName].keys()))
+        for key in attributeInfo[attributeName]:
+            samples += sum(attributeInfo[attributeName][key].values())
+        root = self.newID3Node(None, attributeName, entropy, samples, classCount)
         self.addNodeToGraph(root)
 
         return root
