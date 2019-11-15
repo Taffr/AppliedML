@@ -68,14 +68,17 @@ class ID3DecisionTreeClassifier:
             attributeMapMapMap[attr] = {}
             for value in attributes[attr]:
                 attributeMapMapMap[attr][str(value)] = {}
-                for classification in self.classes:
-                    attributeMapMapMap[attr][str(value)][classification] = 0
+                # for classification in self.classes:
+                #     attributeMapMapMap[attr][str(value)][classification] = 0
 
         for row in range(len(samples)):
             for col in range(len(samples[0])):  # What if missing values?
                 for key in attributes.keys():
                     if samples[row][col] in attributes[key]:
-                        attributeMapMapMap[key][samples[row][col]][target[row]] += 1
+                        if target[row] in attributeMapMapMap[key][samples[row][col]]:
+                            attributeMapMapMap[key][samples[row][col]][target[row]] += 1
+                        else:
+                            attributeMapMapMap[key][samples[row][col]][target[row]] = 1
         print('***** attributeMapMapMap ******')
         print(attributeMapMapMap)
         print('**********************')
@@ -123,6 +126,9 @@ class ID3DecisionTreeClassifier:
         # print(classCount)
         # print('**************')
         entropy = 0
+        if len(classCount) is 1:
+            return 0
+
         total = sum(classCount.values())
         for key in classCount.keys():
             probability = classCount[key] / total
@@ -151,13 +157,24 @@ class ID3DecisionTreeClassifier:
         # Select the attribute which has the maximum value of IG(S, A) and split the current (parent) node on the selected attribute
 
         # Remove the attribute that offers highest IG from the set of attributes
+
+        self.attribute_index = {}
+        index = 0
+        for key in attributes:
+            self.attribute_index[key] = index
+            index += 1
+
         self.classes = classes
         root = self.__buildTree(data, target, None, attributes)
         self.addNodeToGraph(root)
 
-        print('------- ROOT\'S NOODS -------')
+        print('------- ROOT\'S NODES -------')
         for n in root['nodes']:
             print(n)
+            print(' ** NODES **')
+            for nn in n['nodes']:
+                print(nn)
+            print()
         print('----------------------------')
 
 
@@ -180,8 +197,7 @@ class ID3DecisionTreeClassifier:
             print('\nXXXXXXXXXXXXXXXX ALL SAME CLASS XXXXXXXXXXXXX\n')
             root["label"] = lastClass
             root["entropy"] = 0.0
-            root["samples"] = len(samples)
-            root["classCount"] = {lastClass: len(target)}
+            root["samples"] = len(target)
             return root
 
         if len(attributes) == 0:
@@ -203,6 +219,7 @@ class ID3DecisionTreeClassifier:
             root["entropy"] = 0.0
             root["samples"] = sum(classCounter.values())
             root["classCount"] = classCounter
+            print(root)
             return root
         else:
             classCounter = {}
@@ -211,16 +228,19 @@ class ID3DecisionTreeClassifier:
                     classCounter[classification] += 1
                 except:
                     classCounter[classification] = 1
-            #
+
             # print('***** CLASS COUNTER *******')
             # print(classCounter)
             # print('**************')
 
             stateEntropy = self.__entropy(classCounter)
+            # print("stateEntropy: ", stateEntropy)
 
             root["entropy"] = stateEntropy
             root["classCount"] = classCounter
             root["samples"] = len(samples)
+
+
 
             # Root here contains e.g.
             # {
@@ -236,19 +256,30 @@ class ID3DecisionTreeClassifier:
 
             # select target_attribute from highest IG
             split_attribute_dict = self.findSplitAttr(stateEntropy, samples, target, attributes)
-            # print('******* split_attribute_dict ********')
-            # print(split_attribute_dict)
-            # print('***************')
+            print('******* split_attribute_dict ********')
+            print(split_attribute_dict)
+            print('***************')
 
             targetAttribute = split_attribute_dict['attribute']
             root['attribute'] = targetAttribute
+            root['classes'] = attributes[targetAttribute]
+
+            print('***** root in id3 *******')
+            print(root)
+            print('**************')
+
+            # split_attribute_index = split_attribute_dict['i']
+            split_attribute_index = self.attribute_index[targetAttribute]
+            print('split_attribute_index', split_attribute_index)
+            print('split_attribute_values', split_attribute_dict['values'])
+
+
 
             for value in split_attribute_dict['values']:
                 value_node = self.newID3Node()
 
                 sub_samples = []
                 sub_targets = []
-                split_attribute_index = split_attribute_dict['i']
 
                 for i in range(len(samples)):
                     s = samples[i][split_attribute_index]
@@ -256,11 +287,11 @@ class ID3DecisionTreeClassifier:
                         sub_samples.append(samples[i])
                         sub_targets.append(target[i])
 
-                # print('******* subs ********')
-                # print(sub_samples)
-                # print('----')
-                # print(sub_targets)
-                # print('***************')
+                print('******* subs ********')
+                print(sub_samples)
+                print('----')
+                print(sub_targets)
+                print('***************')
 
                 # for s in samples:
                 #     if s[split_attribute_index] == value:
@@ -276,6 +307,9 @@ class ID3DecisionTreeClassifier:
                             classCounter[classification] += 1
                         except:
                             classCounter[classification] = 1
+
+
+
                     maxCount = list(classCounter.values())[0]
                     mostCommon = list(classCounter.keys())[0]
                     for key in classCounter:
@@ -283,15 +317,27 @@ class ID3DecisionTreeClassifier:
                             maxCount = classCounter[key]
                             mostCommon = key
 
+                    print()
+                    print('maxCount', maxCount)
+                    print('mostCommon', mostCommon)
+
                     value_node["label"] = mostCommon
                     value_node["entropy"] = 0.0
                     value_node["samples"] = sum(classCounter.values())
                     value_node["classCount"] = classCounter
 
+                    value_node["attribute"] = 'TEMP: leaf'
+
+                    # print("*** ROOT NODES: ***")
+                    # print(root['nodes'])
+
+                    print(1)
+
 
                     root['nodes'].append(value_node)
-
+                    # return root
                 else:
+                    print(2)
                     # Below this new branch add the subtree ID3 (Samples(v), A, Attributes/{A})
                     print('****** Sub sample exists *******')
                     # del attributes[targetAttribute]
@@ -303,13 +349,12 @@ class ID3DecisionTreeClassifier:
                         if attr != targetAttribute:
                             sub_attributes[attr] = attributes[attr]
 
-                    # print()
-                    # print('******** UPDATED ATTRIBUTES *********')
-                    # print("Removed: ", targetAttribute)
-                    # print(sub_attributes)
-                    # print('****************\n')
+                    # print('sub_attributes', sub_attributes)
+                    print('targetAttribute', targetAttribute)
+                    print('\n*** CALLS __buildTree ***')
                     n = self.__buildTree(sub_samples, sub_targets, targetAttribute, sub_attributes)
                     root['nodes'].append(n)
+            return root
 
 
                 # self.__buildTree(samples, target, targetAttribute, attributes)
@@ -328,6 +373,7 @@ class ID3DecisionTreeClassifier:
         print(root)
         print('**************\n')
         return root
+
 
     def predict(self, data, tree):
         predicted = list()
