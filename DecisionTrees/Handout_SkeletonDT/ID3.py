@@ -64,7 +64,7 @@ class ID3DecisionTreeClassifier:
                     attributeMapMapMap[self.attributeIndex[col]][samples[row][col]] = {}  # Only adds present values in current samples
 
         for row in range(len(samples)):
-            for col in range(len(samples[col])):  # What if missing values?
+            for col in range(len(samples[row])):  # What if missing values?
                 if self.attributeIndex[col] in attributes:
                     try:
                         attributeMapMapMap[self.attributeIndex[col]][samples[row][col]][target[row]] += 1
@@ -158,9 +158,11 @@ class ID3DecisionTreeClassifier:
             root["classes"] = attributes[bestAttribute]
 
             subSets = {}
+            print(samples)
             for value in attributes[bestAttribute]:
                 subSets[value] = {"samples": [], "target": []}
                 for rowIndex in range(len(samples)):
+                    print(self.indexOfAttribute)
                     if value == samples[rowIndex][self.indexOfAttribute[bestAttribute]]:
                         subSets[value]["samples"].append(samples[rowIndex])
                         subSets[value]["target"].append(target[rowIndex])
