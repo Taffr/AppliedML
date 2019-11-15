@@ -38,7 +38,7 @@ class ID3DecisionTreeClassifier:
             self.dot.edge(str(parentid), str(node['id']))
             nodeString += "\n" + str(parentid) + " -> " + str(node['id'])
 
-        print(nodeString)
+        #print(nodeString)
 
         return node
 
@@ -59,13 +59,12 @@ class ID3DecisionTreeClassifier:
                     attributeMapMapMap[self.attributeIndex[col]][samples[row][col]] = {}  # Only adds present values in current samples
 
         for row in range(len(samples)):
-            for col in range(len(samples[0])):  # What if missing values?
+            for col in range(len(samples[col])):  # What if missing values?
                 if self.attributeIndex[col] in attributes:
                     try:
                         attributeMapMapMap[self.attributeIndex[col]][samples[row][col]][target[row]] += 1
                     except:
                         attributeMapMapMap[self.attributeIndex[col]][samples[row][col]][target[row]] = 1
-        print(attributeMapMapMap)
         attrEntropy = {}
         total = len(samples)
         for attr in attributeMapMapMap:
@@ -108,22 +107,16 @@ class ID3DecisionTreeClassifier:
 
     def __buildTree(self, samples, target, attributes):
         root = self.newID3Node()
-        allSameClass = True
-        lastClass = ""
-        for index in range(len(target)):
-            if lastClass != target[index] and lastClass != "":
-                allSameClass = False
-                break
-            lastClass = target[index]
 
-        if allSameClass:
-            root["label"] = lastClass
+        if self.__allSameClass(target):
+            root["label"] = target[0]
             root["entropy"] = 0.0
             root["samples"] = len(target)
-            self.addNodeToGraph(root, self.nodeCounter)
+            self.addNodeToGraph(root)
+            print("case 1:", root)
             return root
 
-        if len(attributes) <= 1:
+        if len(attributes) < 1:
             classCounter = {}
             for classification in target:
                 try:
@@ -140,7 +133,9 @@ class ID3DecisionTreeClassifier:
             root["label"] = mostCommon
             root["entropy"] = 0.0
             root["samples"] = sum(classCounter.values())
-            self.addNodeToGraph(root, self.nodeCounter)
+            root["classCount"] = classCounter
+            self.addNodeToGraph(root)
+            print("case 2:", root)
             return root
         else:
             classCounter = {}
@@ -156,6 +151,7 @@ class ID3DecisionTreeClassifier:
             # select target_attribute from highest IG
             bestAttribute = self.findSplitAttr(stateEntropy, samples, target, attributes)
             root["attribute"] = bestAttribute
+            root["classCount"] = classCounter
             root["classes"] = attributes[bestAttribute]
 
             subSets = {}
@@ -171,11 +167,15 @@ class ID3DecisionTreeClassifier:
                 if attribute != bestAttribute:
                     newAttributes[attribute] = attributes[attribute]
 
-            print(newAttributes)
+            #print(newAttributes)
             for v in subSets:
+                #print("len subset:", len(subSets[v]["samples"]))
+                #print(subSets.keys())
+                print(len(subSets[v]["samples"]))
                 if len(subSets[v]["samples"]) < 1:
+                    print("here")
                     counter = {}
-                    for c in subSets[v]["target"]:
+                    for c in target:
                         try:
                             counter[c] += 1
                         except:
@@ -186,13 +186,30 @@ class ID3DecisionTreeClassifier:
                         if counter[key].value() >= maxCount:
                             maxCount = counter[key].value()
                             maxLabel = key
-                    self.addNodeToGraph(self.newID3Node(maxLabel), self.nodeCounter)
+                    leaf = self.newID3Node(maxLabel)
+                    self.addNodeToGraph(maxLabel)
+                    root["nodes"].append(leaf)
+                    print("case 3:", root)
                 else:
-                    self.__buildTree(subSets[v]["samples"], subSets[v]["target"], newAttributes)
-        self.addNodeToGraph(root, self.nodeCounter)
-        return root
+                    self.addNodeToGraph(root)
+                    #print(v)
+                    root["nodes"].append(self.__buildTree(subSets[v]["samples"], subSets[v]["target"], newAttributes))
+                    #print("case 4:", root)
+            return root
     def predict(self, data, tree):
         predicted = list()
 
         # fill in something more sensible here... root should become the output of the recursive tree creation
         return predicted
+
+    def __allSameClass(self, target):
+        allSameClass = True
+        lastClass = ""
+        for index in range(len(target)):
+            if lastClass != target[index] and lastClass != "":
+                allSameClass = False
+                break
+            lastClass = target[index]
+
+        return allSameClass
+
