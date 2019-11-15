@@ -6,13 +6,12 @@ from sklearn import tree, metrics, datasets
 
 
 def main():
-
     attributes, classes, data, target, data2, target2 = td.ToyData().get_data()
 
     id3 = ID3.ID3DecisionTreeClassifier()
 
     myTree = id3.fit(data, target, attributes, classes)
-    #print(myTree)
+    print(myTree)
     plot = id3.makeDotData()
     plot.render("testTree")
     predicted = id3.predict(data2, myTree)

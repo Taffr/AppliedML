@@ -26,6 +26,11 @@ class ID3DecisionTreeClassifier:
         self.nodeCounter += 1
         return node
 
+    def graphTree(self, root):
+        self.addNodeToGraph(root, root["id"])
+        for node in root["nodes"]:
+            self.graphTree(node)
+
     # adds the node into the graph for visualisation (creates a dot-node)
     def addNodeToGraph(self, node, parentid=-1):
         nodeString = ''
@@ -34,11 +39,11 @@ class ID3DecisionTreeClassifier:
                 nodeString += "\n" + str(k) + ": " + str(node[k])
 
         self.dot.node(str(node['id']), label=nodeString)
-        if (parentid != -1):
+        if parentid != -1:
             self.dot.edge(str(parentid), str(node['id']))
             nodeString += "\n" + str(parentid) + " -> " + str(node['id'])
 
-        #print(nodeString)
+        print(nodeString)
 
         return node
 
@@ -102,18 +107,18 @@ class ID3DecisionTreeClassifier:
             self.attributeIndex[index] = key
             index += 1
         root = self.__buildTree(data, target, attributes)
-        self.addNodeToGraph(root)
+        self.graphTree(root)
         return root
 
     def __buildTree(self, samples, target, attributes):
         root = self.newID3Node()
+        root["nodes"] = []
 
         if self.__allSameClass(target):
             root["label"] = target[0]
             root["entropy"] = 0.0
             root["samples"] = len(target)
-            self.addNodeToGraph(root)
-            print("case 1:", root)
+            root["nodes"]
             return root
 
         if len(attributes) < 1:
@@ -131,11 +136,9 @@ class ID3DecisionTreeClassifier:
                     mostCommon = key
 
             root["label"] = mostCommon
-            root["entropy"] = 0.0
+            root["entropy"] = self.__entropy(classCounter)
             root["samples"] = sum(classCounter.values())
             root["classCount"] = classCounter
-            self.addNodeToGraph(root)
-            print("case 2:", root)
             return root
         else:
             classCounter = {}
@@ -167,13 +170,8 @@ class ID3DecisionTreeClassifier:
                 if attribute != bestAttribute:
                     newAttributes[attribute] = attributes[attribute]
 
-            #print(newAttributes)
-            for v in subSets:
-                #print("len subset:", len(subSets[v]["samples"]))
-                #print(subSets.keys())
-                print(len(subSets[v]["samples"]))
+            for v in subSets.keys():
                 if len(subSets[v]["samples"]) < 1:
-                    print("here")
                     counter = {}
                     for c in target:
                         try:
@@ -183,18 +181,13 @@ class ID3DecisionTreeClassifier:
                     maxCount = 0
                     maxLabel = ""
                     for key in counter:
-                        if counter[key].value() >= maxCount:
-                            maxCount = counter[key].value()
+                        if counter[key] >= maxCount:
+                            maxCount = counter[key]
                             maxLabel = key
                     leaf = self.newID3Node(maxLabel)
-                    self.addNodeToGraph(maxLabel)
                     root["nodes"].append(leaf)
-                    print("case 3:", root)
                 else:
-                    self.addNodeToGraph(root)
-                    #print(v)
                     root["nodes"].append(self.__buildTree(subSets[v]["samples"], subSets[v]["target"], newAttributes))
-                    #print("case 4:", root)
             return root
     def predict(self, data, tree):
         predicted = list()
