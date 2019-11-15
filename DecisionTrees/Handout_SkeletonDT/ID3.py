@@ -26,10 +26,10 @@ class ID3DecisionTreeClassifier:
         self.nodeCounter += 1
         return node
 
-    def graphTree(self, root):
-        self.addNodeToGraph(root, root["id"])
+    def graphTree(self, root, parentId=-1):
+        self.addNodeToGraph(root, parentId)
         for node in root["nodes"]:
-            self.graphTree(node)
+            self.graphTree(node, root["id"])
 
     # adds the node into the graph for visualisation (creates a dot-node)
     def addNodeToGraph(self, node, parentid=-1):
@@ -110,10 +110,10 @@ class ID3DecisionTreeClassifier:
         self.graphTree(root)
         return root
 
-    def __buildTree(self, samples, target, attributes):
+    def __buildTree(self, samples, target, attributes, prevSplit=None):
         root = self.newID3Node()
         root["nodes"] = []
-
+        root["prevSplit"] = prevSplit
         if self.__allSameClass(target):
             root["label"] = target[0]
             root["entropy"] = 0.0
@@ -185,15 +185,26 @@ class ID3DecisionTreeClassifier:
                             maxCount = counter[key]
                             maxLabel = key
                     leaf = self.newID3Node(maxLabel)
+                    leaf["prevSplit"] = v
                     root["nodes"].append(leaf)
                 else:
-                    root["nodes"].append(self.__buildTree(subSets[v]["samples"], subSets[v]["target"], newAttributes))
+                    root["nodes"].append(self.__buildTree(subSets[v]["samples"], subSets[v]["target"], newAttributes, v))
             return root
     def predict(self, data, tree):
         predicted = list()
-
+        for entry in data:
+            predicted.append({entry : self.predictRecurr(tree, entry)})
         # fill in something more sensible here... root should become the output of the recursive tree creation
         return predicted
+
+    def predictRecurr(self, node, attrValues):
+        if node["nodes"] == []:
+            return node["label"]
+        else:
+            for node in node["nodes"]:
+                print(node["prevSplit"])
+                if node["prevSplit"] in attrValues:
+                    return self.predictRecurr(node, attrValues)
 
     def __allSameClass(self, target):
         allSameClass = True
