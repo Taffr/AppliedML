@@ -2,14 +2,14 @@
 digraph {
 	0 [label="
 id: 0
-attribute: 42
+attribute: 34
 entropy: 3.3216908881744827
 samples: 1257
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 classCount: {0: 125, 1: 129, 2: 124, 3: 130, 4: 124, 5: 126, 6: 127, 7: 125, 8: 122, 9: 125}"]
 	1 [label="
 id: 1
-attribute: 53
+attribute: 43
 entropy: 2.3354232152665566
 samples: 288
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18,7 +18,7 @@ classCount: {3: 105, 5: 21, 9: 50, 2: 71, 1: 25, 8: 9, 7: 7}"]
 	0 -> 1
 	2 [label="
 id: 2
-attribute: 35
+attribute: 29
 entropy: 1.4144883312392689
 samples: 156
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -27,7 +27,7 @@ classCount: {3: 92, 5: 12, 9: 47, 1: 5}"]
 	1 -> 2
 	3 [label="
 id: 3
-attribute: 01
+attribute: 1
 entropy: 0.6500224216483541
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -144,7 +144,7 @@ prevSplit: 16"]
 	3 -> 20
 	21 [label="
 id: 21
-attribute: 04
+attribute: 4
 entropy: 0.8812908992306927
 samples: 10
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -279,7 +279,7 @@ prevSplit: 2"]
 	2 -> 39
 	40 [label="
 id: 40
-attribute: 04
+attribute: 4
 entropy: 0.5032583347756457
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -400,7 +400,7 @@ prevSplit: 16"]
 	40 -> 57
 	58 [label="
 id: 58
-attribute: 03
+attribute: 3
 entropy: 0.5032583347756457
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -531,7 +531,7 @@ prevSplit: 5"]
 	2 -> 76
 	77 [label="
 id: 77
-attribute: 11
+attribute: 9
 entropy: 0.4689955935892812
 samples: 10
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -656,7 +656,7 @@ prevSplit: 16"]
 	77 -> 94
 	95 [label="
 id: 95
-attribute: 22
+attribute: 18
 entropy: 0.8366407419411673
 samples: 15
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -783,7 +783,7 @@ prevSplit: 16"]
 	95 -> 112
 	113 [label="
 id: 113
-attribute: 02
+attribute: 2
 entropy: 0.5435644431995964
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -908,7 +908,7 @@ prevSplit: 16"]
 	113 -> 130
 	131 [label="
 id: 131
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1025,7 +1025,7 @@ prevSplit: 16"]
 	131 -> 148
 	149 [label="
 id: 149
-attribute: 01
+attribute: 1
 entropy: 0.8112781244591328
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1142,7 +1142,7 @@ prevSplit: 16"]
 	149 -> 166
 	167 [label="
 id: 167
-attribute: 03
+attribute: 3
 entropy: 1.3709505944546687
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1263,7 +1263,7 @@ prevSplit: 16"]
 	167 -> 184
 	185 [label="
 id: 185
-attribute: 13
+attribute: 11
 entropy: 1.1567796494470395
 samples: 10
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1404,7 +1404,7 @@ prevSplit: 14"]
 	2 -> 204
 	205 [label="
 id: 205
-attribute: 01
+attribute: 1
 entropy: 0.7642045065086203
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1521,7 +1521,7 @@ prevSplit: 16"]
 	205 -> 222
 	223 [label="
 id: 223
-attribute: 06
+attribute: 6
 entropy: 0.5115779700152474
 samples: 34
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1642,7 +1642,7 @@ prevSplit: 16"]
 	223 -> 240
 	241 [label="
 id: 241
-attribute: 03
+attribute: 3
 entropy: 0.5435644431995964
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1763,7 +1763,7 @@ prevSplit: 16"]
 	241 -> 258
 	259 [label="
 id: 259
-attribute: 03
+attribute: 3
 entropy: 0.9709505944546686
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -1884,7 +1884,7 @@ prevSplit: 16"]
 	259 -> 276
 	277 [label="
 id: 277
-attribute: 05
+attribute: 5
 entropy: 1.8423709931771088
 samples: 7
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2007,7 +2007,7 @@ prevSplit: 16"]
 	277 -> 294
 	295 [label="
 id: 295
-attribute: 01
+attribute: 1
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2122,7 +2122,7 @@ prevSplit: 16"]
 	295 -> 312
 	313 [label="
 id: 313
-attribute: 04
+attribute: 4
 entropy: 0.7219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2243,7 +2243,7 @@ prevSplit: 16"]
 	313 -> 330
 	331 [label="
 id: 331
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2360,7 +2360,7 @@ prevSplit: 16"]
 	331 -> 348
 	349 [label="
 id: 349
-attribute: 02
+attribute: 2
 entropy: 1.8423709931771088
 samples: 7
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2483,7 +2483,7 @@ prevSplit: 16"]
 	349 -> 366
 	367 [label="
 id: 367
-attribute: 03
+attribute: 3
 entropy: 1.061278124459133
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2606,7 +2606,7 @@ prevSplit: 16"]
 	367 -> 384
 	385 [label="
 id: 385
-attribute: 05
+attribute: 5
 entropy: 1.9056390622295662
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2727,7 +2727,7 @@ prevSplit: 16"]
 	385 -> 402
 	403 [label="
 id: 403
-attribute: 13
+attribute: 11
 entropy: 1.4056390622295662
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2850,7 +2850,7 @@ prevSplit: 16"]
 	403 -> 420
 	421 [label="
 id: 421
-attribute: 03
+attribute: 3
 entropy: 1.2987949406953985
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -2975,7 +2975,7 @@ prevSplit: 16"]
 	421 -> 438
 	439 [label="
 id: 439
-attribute: 13
+attribute: 11
 entropy: 1.9056390622295662
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3098,7 +3098,7 @@ prevSplit: 16"]
 	439 -> 456
 	457 [label="
 id: 457
-attribute: 02
+attribute: 2
 entropy: 0.9709505944546686
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3219,7 +3219,7 @@ prevSplit: 16"]
 	457 -> 474
 	475 [label="
 id: 475
-attribute: 02
+attribute: 2
 entropy: 0.8112781244591328
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3346,7 +3346,7 @@ prevSplit: 16"]
 	475 -> 492
 	493 [label="
 id: 493
-attribute: 55
+attribute: 45
 entropy: 0.9444885341662053
 samples: 18
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3469,7 +3469,7 @@ prevSplit: 16"]
 	493 -> 510
 	511 [label="
 id: 511
-attribute: 72
+attribute: 58
 entropy: 1.3342094594480487
 samples: 22
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3500,7 +3500,7 @@ prevSplit: 2"]
 	511 -> 514
 	515 [label="
 id: 515
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3631,7 +3631,7 @@ prevSplit: 5"]
 	511 -> 534
 	535 [label="
 id: 535
-attribute: 03
+attribute: 3
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3822,7 +3822,7 @@ prevSplit: 16"]
 	511 -> 562
 	563 [label="
 id: 563
-attribute: 53
+attribute: 43
 entropy: 2.6593568854534073
 samples: 77
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3831,7 +3831,7 @@ classCount: {1: 7, 9: 12, 2: 22, 5: 9, 8: 14, 3: 7, 7: 6}"]
 	0 -> 563
 	564 [label="
 id: 564
-attribute: 32
+attribute: 26
 entropy: 1.8608941290707994
 samples: 26
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -3878,7 +3878,7 @@ prevSplit: 4"]
 	564 -> 569
 	570 [label="
 id: 570
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4021,7 +4021,7 @@ prevSplit: 9"]
 	564 -> 591
 	592 [label="
 id: 592
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4146,7 +4146,7 @@ prevSplit: 11"]
 	564 -> 610
 	611 [label="
 id: 611
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4277,7 +4277,7 @@ prevSplit: 14"]
 	564 -> 630
 	631 [label="
 id: 631
-attribute: 02
+attribute: 2
 entropy: 0.7219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4430,7 +4430,7 @@ prevSplit: 3"]
 	563 -> 652
 	653 [label="
 id: 653
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4567,7 +4567,7 @@ prevSplit: 7"]
 	563 -> 673
 	674 [label="
 id: 674
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4686,7 +4686,7 @@ prevSplit: 16"]
 	674 -> 691
 	692 [label="
 id: 692
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4815,7 +4815,7 @@ prevSplit: 10"]
 	563 -> 710
 	711 [label="
 id: 711
-attribute: 03
+attribute: 3
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -4942,7 +4942,7 @@ prevSplit: 12"]
 	563 -> 729
 	730 [label="
 id: 730
-attribute: 04
+attribute: 4
 entropy: 1.3709505944546687
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5063,7 +5063,7 @@ prevSplit: 16"]
 	730 -> 747
 	748 [label="
 id: 748
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5182,7 +5182,7 @@ prevSplit: 16"]
 	748 -> 765
 	766 [label="
 id: 766
-attribute: 02
+attribute: 2
 entropy: 1.9219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5303,7 +5303,7 @@ prevSplit: 16"]
 	766 -> 783
 	784 [label="
 id: 784
-attribute: 02
+attribute: 2
 entropy: 0.5916727785823275
 samples: 14
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5434,7 +5434,7 @@ prevSplit: 16"]
 	784 -> 801
 	802 [label="
 id: 802
-attribute: 25
+attribute: 21
 entropy: 2.759599503186904
 samples: 50
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5443,7 +5443,7 @@ classCount: {2: 7, 8: 9, 7: 6, 9: 10, 5: 7, 3: 4, 1: 7}"]
 	0 -> 802
 	803 [label="
 id: 803
-attribute: 75
+attribute: 61
 entropy: 1.863120568566631
 samples: 14
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5576,7 +5576,7 @@ prevSplit: 1"]
 	802 -> 821
 	822 [label="
 id: 822
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5745,7 +5745,7 @@ prevSplit: 9"]
 	802 -> 846
 	847 [label="
 id: 847
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5868,7 +5868,7 @@ prevSplit: 11"]
 	802 -> 865
 	866 [label="
 id: 866
-attribute: 02
+attribute: 2
 entropy: 1.3709505944546687
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -5987,7 +5987,7 @@ prevSplit: 16"]
 	866 -> 883
 	884 [label="
 id: 884
-attribute: 01
+attribute: 1
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6102,7 +6102,7 @@ prevSplit: 16"]
 	884 -> 901
 	902 [label="
 id: 902
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6227,7 +6227,7 @@ prevSplit: 15"]
 	802 -> 920
 	921 [label="
 id: 921
-attribute: 06
+attribute: 6
 entropy: 1.295461844238322
 samples: 10
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6346,7 +6346,7 @@ prevSplit: 16"]
 	921 -> 938
 	939 [label="
 id: 939
-attribute: 53
+attribute: 43
 entropy: 2.743010636813237
 samples: 37
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6355,7 +6355,7 @@ classCount: {1: 4, 2: 4, 9: 5, 8: 9, 5: 6, 3: 4, 7: 5}"]
 	0 -> 939
 	940 [label="
 id: 940
-attribute: 02
+attribute: 2
 entropy: 1.5709505944546684
 samples: 10
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6486,7 +6486,7 @@ prevSplit: 16"]
 	940 -> 957
 	958 [label="
 id: 958
-attribute: 01
+attribute: 1
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6617,7 +6617,7 @@ prevSplit: 3"]
 	939 -> 977
 	978 [label="
 id: 978
-attribute: 03
+attribute: 3
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6762,7 +6762,7 @@ prevSplit: 8"]
 	939 -> 999
 	1000 [label="
 id: 1000
-attribute: 02
+attribute: 2
 entropy: 0.8112781244591328
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6881,7 +6881,7 @@ prevSplit: 16"]
 	1000 -> 1017
 	1018 [label="
 id: 1018
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -6996,7 +6996,7 @@ prevSplit: 16"]
 	1018 -> 1035
 	1036 [label="
 id: 1036
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7119,7 +7119,7 @@ prevSplit: 12"]
 	939 -> 1054
 	1055 [label="
 id: 1055
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7242,7 +7242,7 @@ prevSplit: 14"]
 	939 -> 1073
 	1074 [label="
 id: 1074
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7365,7 +7365,7 @@ prevSplit: 16"]
 	939 -> 1092
 	1093 [label="
 id: 1093
-attribute: 65
+attribute: 53
 entropy: 2.774357748728675
 samples: 35
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7374,7 +7374,7 @@ classCount: {8: 6, 5: 7, 7: 5, 1: 7, 9: 4, 3: 1, 0: 4, 2: 1}"]
 	0 -> 1093
 	1094 [label="
 id: 1094
-attribute: 04
+attribute: 4
 entropy: 0.9852281360342516
 samples: 7
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7519,7 +7519,7 @@ prevSplit: 3"]
 	1093 -> 1114
 	1115 [label="
 id: 1115
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7648,7 +7648,7 @@ prevSplit: 6"]
 	1093 -> 1134
 	1135 [label="
 id: 1135
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7771,7 +7771,7 @@ prevSplit: 8"]
 	1093 -> 1153
 	1154 [label="
 id: 1154
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -7900,7 +7900,7 @@ prevSplit: 11"]
 	1093 -> 1173
 	1174 [label="
 id: 1174
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8033,7 +8033,7 @@ prevSplit: 14"]
 	1093 -> 1193
 	1194 [label="
 id: 1194
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8148,7 +8148,7 @@ prevSplit: 16"]
 	1194 -> 1211
 	1212 [label="
 id: 1212
-attribute: 02
+attribute: 2
 entropy: 1.7924812503605778
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8271,7 +8271,7 @@ prevSplit: 16"]
 	1212 -> 1229
 	1230 [label="
 id: 1230
-attribute: 12
+attribute: 10
 entropy: 2.8264658909811935
 samples: 36
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8280,7 +8280,7 @@ classCount: {2: 5, 1: 4, 8: 8, 5: 3, 9: 8, 7: 4, 3: 2, 0: 2}"]
 	0 -> 1230
 	1231 [label="
 id: 1231
-attribute: 04
+attribute: 4
 entropy: 0.8112781244591328
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8405,7 +8405,7 @@ prevSplit: 1"]
 	1230 -> 1249
 	1250 [label="
 id: 1250
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8520,7 +8520,7 @@ prevSplit: 16"]
 	1250 -> 1267
 	1268 [label="
 id: 1268
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8679,7 +8679,7 @@ prevSplit: 9"]
 	1230 -> 1291
 	1292 [label="
 id: 1292
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8794,7 +8794,7 @@ prevSplit: 16"]
 	1292 -> 1309
 	1310 [label="
 id: 1310
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -8923,7 +8923,7 @@ prevSplit: 13"]
 	1230 -> 1329
 	1330 [label="
 id: 1330
-attribute: 01
+attribute: 1
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9040,7 +9040,7 @@ prevSplit: 16"]
 	1330 -> 1347
 	1348 [label="
 id: 1348
-attribute: 02
+attribute: 2
 entropy: 1.9182958340544896
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9163,7 +9163,7 @@ prevSplit: 16"]
 	1348 -> 1365
 	1366 [label="
 id: 1366
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9290,7 +9290,7 @@ prevSplit: 16"]
 	1366 -> 1383
 	1384 [label="
 id: 1384
-attribute: 53
+attribute: 43
 entropy: 2.8019239983882507
 samples: 29
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9299,7 +9299,7 @@ classCount: {5: 7, 8: 5, 7: 4, 9: 3, 0: 2, 1: 5, 4: 1, 2: 2}"]
 	0 -> 1384
 	1385 [label="
 id: 1385
-attribute: 05
+attribute: 5
 entropy: 1.4591479170272448
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9486,7 +9486,7 @@ prevSplit: 9"]
 	1384 -> 1411
 	1412 [label="
 id: 1412
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9601,7 +9601,7 @@ prevSplit: 16"]
 	1412 -> 1429
 	1430 [label="
 id: 1430
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9724,7 +9724,7 @@ prevSplit: 12"]
 	1384 -> 1448
 	1449 [label="
 id: 1449
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9847,7 +9847,7 @@ prevSplit: 14"]
 	1384 -> 1467
 	1468 [label="
 id: 1468
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9970,7 +9970,7 @@ prevSplit: 16"]
 	1384 -> 1486
 	1487 [label="
 id: 1487
-attribute: 75
+attribute: 61
 entropy: 2.965727168046281
 samples: 56
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -9979,7 +9979,7 @@ classCount: {6: 1, 5: 7, 1: 7, 2: 3, 7: 11, 8: 12, 9: 8, 3: 2, 0: 4, 4: 1}"]
 	0 -> 1487
 	1488 [label="
 id: 1488
-attribute: 35
+attribute: 29
 entropy: 1.5275070675902451
 samples: 18
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10058,7 +10058,7 @@ prevSplit: 9"]
 	1488 -> 1498
 	1499 [label="
 id: 1499
-attribute: 05
+attribute: 5
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10229,7 +10229,7 @@ prevSplit: 1"]
 	1487 -> 1523
 	1524 [label="
 id: 1524
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10348,7 +10348,7 @@ prevSplit: 16"]
 	1524 -> 1541
 	1542 [label="
 id: 1542
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10473,7 +10473,7 @@ prevSplit: 4"]
 	1487 -> 1560
 	1561 [label="
 id: 1561
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10606,7 +10606,7 @@ prevSplit: 7"]
 	1487 -> 1580
 	1581 [label="
 id: 1581
-attribute: 05
+attribute: 5
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10739,7 +10739,7 @@ prevSplit: 10"]
 	1487 -> 1600
 	1601 [label="
 id: 1601
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10854,7 +10854,7 @@ prevSplit: 16"]
 	1601 -> 1618
 	1619 [label="
 id: 1619
-attribute: 03
+attribute: 3
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -10973,7 +10973,7 @@ prevSplit: 16"]
 	1619 -> 1636
 	1637 [label="
 id: 1637
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11104,7 +11104,7 @@ prevSplit: 15"]
 	1487 -> 1656
 	1657 [label="
 id: 1657
-attribute: 03
+attribute: 3
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11221,7 +11221,7 @@ prevSplit: 16"]
 	1657 -> 1674
 	1675 [label="
 id: 1675
-attribute: 34
+attribute: 28
 entropy: 2.8789625533096883
 samples: 50
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11230,7 +11230,7 @@ classCount: {0: 13, 2: 5, 5: 8, 1: 6, 7: 6, 8: 6, 9: 1, 3: 4, 4: 1}"]
 	0 -> 1675
 	1676 [label="
 id: 1676
-attribute: 01
+attribute: 1
 entropy: 0.37123232664087563
 samples: 14
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11381,7 +11381,7 @@ prevSplit: 5"]
 	1675 -> 1698
 	1699 [label="
 id: 1699
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11496,7 +11496,7 @@ prevSplit: 16"]
 	1699 -> 1716
 	1717 [label="
 id: 1717
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11649,7 +11649,7 @@ prevSplit: 12"]
 	1675 -> 1739
 	1740 [label="
 id: 1740
-attribute: 01
+attribute: 1
 entropy: 1.5219280948873621
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11766,7 +11766,7 @@ prevSplit: 16"]
 	1740 -> 1757
 	1758 [label="
 id: 1758
-attribute: 24
+attribute: 20
 entropy: 2.2516291673878226
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -11889,7 +11889,7 @@ prevSplit: 16"]
 	1758 -> 1775
 	1776 [label="
 id: 1776
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12008,7 +12008,7 @@ prevSplit: 16"]
 	1776 -> 1793
 	1794 [label="
 id: 1794
-attribute: 14
+attribute: 12
 entropy: 1.4466166676282082
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12127,7 +12127,7 @@ prevSplit: 16"]
 	1794 -> 1811
 	1812 [label="
 id: 1812
-attribute: 34
+attribute: 28
 entropy: 2.579718699696422
 samples: 42
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12136,7 +12136,7 @@ classCount: {0: 15, 8: 4, 1: 6, 5: 3, 9: 5, 7: 7, 4: 1, 6: 1}"]
 	0 -> 1812
 	1813 [label="
 id: 1813
-attribute: 04
+attribute: 4
 entropy: 0.3372900666170139
 samples: 16
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12323,7 +12323,7 @@ prevSplit: 9"]
 	1812 -> 1839
 	1840 [label="
 id: 1840
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12454,7 +12454,7 @@ prevSplit: 12"]
 	1812 -> 1859
 	1860 [label="
 id: 1860
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12583,7 +12583,7 @@ prevSplit: 14"]
 	1812 -> 1878
 	1879 [label="
 id: 1879
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12698,7 +12698,7 @@ prevSplit: 16"]
 	1879 -> 1896
 	1897 [label="
 id: 1897
-attribute: 04
+attribute: 4
 entropy: 1.5612781244591325
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12825,7 +12825,7 @@ prevSplit: 16"]
 	1897 -> 1914
 	1915 [label="
 id: 1915
-attribute: 15
+attribute: 13
 entropy: 2.8948447325506383
 samples: 42
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12834,7 +12834,7 @@ classCount: {8: 8, 5: 3, 6: 5, 0: 12, 7: 4, 1: 3, 2: 2, 4: 3, 9: 2}"]
 	0 -> 1915
 	1916 [label="
 id: 1916
-attribute: 02
+attribute: 2
 entropy: 1.2516291673878228
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -12961,7 +12961,7 @@ prevSplit: 1"]
 	1915 -> 1934
 	1935 [label="
 id: 1935
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13082,7 +13082,7 @@ prevSplit: 3"]
 	1915 -> 1953
 	1954 [label="
 id: 1954
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13199,7 +13199,7 @@ prevSplit: 16"]
 	1954 -> 1971
 	1972 [label="
 id: 1972
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13324,7 +13324,7 @@ prevSplit: 6"]
 	1915 -> 1990
 	1991 [label="
 id: 1991
-attribute: 03
+attribute: 3
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13449,7 +13449,7 @@ prevSplit: 8"]
 	1915 -> 2009
 	2010 [label="
 id: 2010
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13572,7 +13572,7 @@ prevSplit: 10"]
 	1915 -> 2028
 	2029 [label="
 id: 2029
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13689,7 +13689,7 @@ prevSplit: 16"]
 	2029 -> 2046
 	2047 [label="
 id: 2047
-attribute: 01
+attribute: 1
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13812,7 +13812,7 @@ prevSplit: 13"]
 	1915 -> 2065
 	2066 [label="
 id: 2066
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -13929,7 +13929,7 @@ prevSplit: 16"]
 	2066 -> 2083
 	2084 [label="
 id: 2084
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14048,7 +14048,7 @@ prevSplit: 16"]
 	2084 -> 2101
 	2102 [label="
 id: 2102
-attribute: 02
+attribute: 2
 entropy: 0.6500224216483541
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14169,7 +14169,7 @@ prevSplit: 16"]
 	2102 -> 2119
 	2120 [label="
 id: 2120
-attribute: 54
+attribute: 44
 entropy: 2.956132304807292
 samples: 42
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14178,7 +14178,7 @@ classCount: {7: 7, 8: 3, 1: 5, 5: 9, 4: 3, 0: 6, 9: 6, 2: 2, 6: 1}"]
 	0 -> 2120
 	2121 [label="
 id: 2121
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14335,7 +14335,7 @@ prevSplit: 4"]
 	2120 -> 2142
 	2143 [label="
 id: 2143
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14484,7 +14484,7 @@ prevSplit: 9"]
 	2120 -> 2164
 	2165 [label="
 id: 2165
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14607,7 +14607,7 @@ prevSplit: 11"]
 	2120 -> 2183
 	2184 [label="
 id: 2184
-attribute: 02
+attribute: 2
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14732,7 +14732,7 @@ prevSplit: 13"]
 	2120 -> 2202
 	2203 [label="
 id: 2203
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14857,7 +14857,7 @@ prevSplit: 15"]
 	2120 -> 2221
 	2222 [label="
 id: 2222
-attribute: 23
+attribute: 19
 entropy: 1.584962500721156
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14980,7 +14980,7 @@ prevSplit: 16"]
 	2222 -> 2239
 	2240 [label="
 id: 2240
-attribute: 65
+attribute: 53
 entropy: 2.7698833422134186
 samples: 74
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -14989,7 +14989,7 @@ classCount: {1: 10, 8: 8, 0: 23, 5: 4, 4: 6, 7: 13, 6: 7, 3: 1, 9: 2}"]
 	0 -> 2240
 	2241 [label="
 id: 2241
-attribute: 15
+attribute: 13
 entropy: 1.3862740938959681
 samples: 18
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15056,7 +15056,7 @@ prevSplit: 7"]
 	2241 -> 2249
 	2250 [label="
 id: 2250
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15229,7 +15229,7 @@ prevSplit: 16"]
 	2241 -> 2275
 	2276 [label="
 id: 2276
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15344,7 +15344,7 @@ prevSplit: 16"]
 	2276 -> 2293
 	2294 [label="
 id: 2294
-attribute: 03
+attribute: 3
 entropy: 1.584962500721156
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15461,7 +15461,7 @@ prevSplit: 16"]
 	2294 -> 2311
 	2312 [label="
 id: 2312
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15576,7 +15576,7 @@ prevSplit: 16"]
 	2312 -> 2329
 	2330 [label="
 id: 2330
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15691,7 +15691,7 @@ prevSplit: 16"]
 	2330 -> 2347
 	2348 [label="
 id: 2348
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15806,7 +15806,7 @@ prevSplit: 16"]
 	2348 -> 2365
 	2366 [label="
 id: 2366
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -15921,7 +15921,7 @@ prevSplit: 16"]
 	2366 -> 2383
 	2384 [label="
 id: 2384
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16036,7 +16036,7 @@ prevSplit: 16"]
 	2384 -> 2401
 	2402 [label="
 id: 2402
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16151,7 +16151,7 @@ prevSplit: 16"]
 	2402 -> 2419
 	2420 [label="
 id: 2420
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16266,7 +16266,7 @@ prevSplit: 16"]
 	2420 -> 2437
 	2438 [label="
 id: 2438
-attribute: 02
+attribute: 2
 entropy: 0.8112781244591328
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16385,7 +16385,7 @@ prevSplit: 16"]
 	2438 -> 2455
 	2456 [label="
 id: 2456
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16502,7 +16502,7 @@ prevSplit: 16"]
 	2456 -> 2473
 	2474 [label="
 id: 2474
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16619,7 +16619,7 @@ prevSplit: 16"]
 	2474 -> 2491
 	2492 [label="
 id: 2492
-attribute: 04
+attribute: 4
 entropy: 2.0
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16738,7 +16738,7 @@ prevSplit: 16"]
 	2492 -> 2509
 	2510 [label="
 id: 2510
-attribute: 03
+attribute: 3
 entropy: 1.6644977792004616
 samples: 7
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16871,7 +16871,7 @@ prevSplit: 15"]
 	2240 -> 2528
 	2529 [label="
 id: 2529
-attribute: 02
+attribute: 2
 entropy: 0.9709505944546686
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -16988,7 +16988,7 @@ prevSplit: 16"]
 	2529 -> 2546
 	2547 [label="
 id: 2547
-attribute: 32
+attribute: 26
 entropy: 2.8158664292574134
 samples: 52
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17011,7 +17011,7 @@ prevSplit: 1"]
 	2547 -> 2549
 	2550 [label="
 id: 2550
-attribute: 02
+attribute: 2
 entropy: 0.7219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17176,7 +17176,7 @@ prevSplit: 8"]
 	2547 -> 2573
 	2574 [label="
 id: 2574
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17291,7 +17291,7 @@ prevSplit: 16"]
 	2574 -> 2591
 	2592 [label="
 id: 2592
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17408,7 +17408,7 @@ prevSplit: 16"]
 	2592 -> 2609
 	2610 [label="
 id: 2610
-attribute: 03
+attribute: 3
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17523,7 +17523,7 @@ prevSplit: 16"]
 	2610 -> 2627
 	2628 [label="
 id: 2628
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17640,7 +17640,7 @@ prevSplit: 16"]
 	2628 -> 2645
 	2646 [label="
 id: 2646
-attribute: 14
+attribute: 12
 entropy: 1.8423709931771088
 samples: 7
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17763,7 +17763,7 @@ prevSplit: 16"]
 	2646 -> 2663
 	2664 [label="
 id: 2664
-attribute: 03
+attribute: 3
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -17882,7 +17882,7 @@ prevSplit: 16"]
 	2664 -> 2681
 	2682 [label="
 id: 2682
-attribute: 02
+attribute: 2
 entropy: 0.9709505944546686
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18003,7 +18003,7 @@ prevSplit: 16"]
 	2682 -> 2699
 	2700 [label="
 id: 2700
-attribute: 43
+attribute: 35
 entropy: 1.7295739585136223
 samples: 12
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18128,7 +18128,7 @@ prevSplit: 16"]
 	2700 -> 2717
 	2718 [label="
 id: 2718
-attribute: 35
+attribute: 29
 entropy: 2.7313553713178207
 samples: 40
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18137,7 +18137,7 @@ classCount: {8: 3, 0: 6, 6: 10, 4: 9, 7: 5, 9: 1, 5: 4, 1: 2}"]
 	0 -> 2718
 	2719 [label="
 id: 2719
-attribute: 05
+attribute: 5
 entropy: 1.287054028118727
 samples: 14
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18276,7 +18276,7 @@ prevSplit: 2"]
 	2718 -> 2738
 	2739 [label="
 id: 2739
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18391,7 +18391,7 @@ prevSplit: 16"]
 	2739 -> 2756
 	2757 [label="
 id: 2757
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18522,7 +18522,7 @@ prevSplit: 6"]
 	2718 -> 2776
 	2777 [label="
 id: 2777
-attribute: 05
+attribute: 5
 entropy: 2.0
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18641,7 +18641,7 @@ prevSplit: 16"]
 	2777 -> 2794
 	2795 [label="
 id: 2795
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18764,7 +18764,7 @@ prevSplit: 9"]
 	2718 -> 2813
 	2814 [label="
 id: 2814
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -18887,7 +18887,7 @@ prevSplit: 11"]
 	2718 -> 2832
 	2833 [label="
 id: 2833
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19032,7 +19032,7 @@ prevSplit: 16"]
 	2718 -> 2854
 	2855 [label="
 id: 2855
-attribute: 12
+attribute: 10
 entropy: 2.8029043900867467
 samples: 71
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19041,7 +19041,7 @@ classCount: {6: 17, 5: 8, 7: 9, 0: 4, 8: 8, 1: 5, 4: 16, 9: 4}"]
 	0 -> 2855
 	2856 [label="
 id: 2856
-attribute: 32
+attribute: 26
 entropy: 1.75
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19168,7 +19168,7 @@ prevSplit: 16"]
 	2856 -> 2873
 	2874 [label="
 id: 2874
-attribute: 03
+attribute: 3
 entropy: 1.2516291673878228
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19299,7 +19299,7 @@ prevSplit: 2"]
 	2855 -> 2892
 	2893 [label="
 id: 2893
-attribute: 03
+attribute: 3
 entropy: 0.7219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19420,7 +19420,7 @@ prevSplit: 16"]
 	2893 -> 2910
 	2911 [label="
 id: 2911
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19535,7 +19535,7 @@ prevSplit: 16"]
 	2911 -> 2928
 	2929 [label="
 id: 2929
-attribute: 03
+attribute: 3
 entropy: 1.3709505944546687
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19656,7 +19656,7 @@ prevSplit: 16"]
 	2929 -> 2946
 	2947 [label="
 id: 2947
-attribute: 14
+attribute: 12
 entropy: 1.8910611120726526
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19785,7 +19785,7 @@ prevSplit: 16"]
 	2947 -> 2964
 	2965 [label="
 id: 2965
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19900,7 +19900,7 @@ prevSplit: 16"]
 	2965 -> 2982
 	2983 [label="
 id: 2983
-attribute: 03
+attribute: 3
 entropy: 2.0
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20019,7 +20019,7 @@ prevSplit: 16"]
 	2983 -> 3000
 	3001 [label="
 id: 3001
-attribute: 03
+attribute: 3
 entropy: 0.7219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20156,7 +20156,7 @@ prevSplit: 11"]
 	2855 -> 3020
 	3021 [label="
 id: 3021
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20271,7 +20271,7 @@ prevSplit: 16"]
 	3021 -> 3038
 	3039 [label="
 id: 3039
-attribute: 01
+attribute: 1
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20386,7 +20386,7 @@ prevSplit: 16"]
 	3039 -> 3056
 	3057 [label="
 id: 3057
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20511,7 +20511,7 @@ prevSplit: 15"]
 	2855 -> 3075
 	3076 [label="
 id: 3076
-attribute: 62
+attribute: 50
 entropy: 1.7295739585136223
 samples: 12
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20644,7 +20644,7 @@ prevSplit: 16"]
 	3076 -> 3093
 	3094 [label="
 id: 3094
-attribute: 62
+attribute: 50
 entropy: 2.4140721202549673
 samples: 236
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20653,7 +20653,7 @@ classCount: {4: 72, 0: 23, 7: 19, 6: 79, 1: 21, 5: 15, 8: 4, 9: 3}"]
 	0 -> 3094
 	3095 [label="
 id: 3095
-attribute: 15
+attribute: 13
 entropy: 1.3811482244109208
 samples: 85
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20670,7 +20670,7 @@ prevSplit: 0"]
 	3095 -> 3096
 	3097 [label="
 id: 3097
-attribute: 02
+attribute: 2
 entropy: 0.5916727785823275
 samples: 7
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20793,7 +20793,7 @@ prevSplit: 2"]
 	3095 -> 3115
 	3116 [label="
 id: 3116
-attribute: 03
+attribute: 3
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -20926,7 +20926,7 @@ prevSplit: 5"]
 	3095 -> 3135
 	3136 [label="
 id: 3136
-attribute: 02
+attribute: 2
 entropy: 0.8112781244591328
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21049,7 +21049,7 @@ prevSplit: 7"]
 	3095 -> 3154
 	3155 [label="
 id: 3155
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21180,7 +21180,7 @@ prevSplit: 10"]
 	3095 -> 3174
 	3175 [label="
 id: 3175
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21295,7 +21295,7 @@ prevSplit: 16"]
 	3175 -> 3192
 	3193 [label="
 id: 3193
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21410,7 +21410,7 @@ prevSplit: 16"]
 	3193 -> 3210
 	3211 [label="
 id: 3211
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21525,7 +21525,7 @@ prevSplit: 16"]
 	3211 -> 3228
 	3229 [label="
 id: 3229
-attribute: 03
+attribute: 3
 entropy: 0.8112781244591328
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21644,7 +21644,7 @@ prevSplit: 16"]
 	3229 -> 3246
 	3247 [label="
 id: 3247
-attribute: 03
+attribute: 3
 entropy: 0.7219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21763,7 +21763,7 @@ prevSplit: 16"]
 	3247 -> 3264
 	3265 [label="
 id: 3265
-attribute: 03
+attribute: 3
 entropy: 1.2987949406953985
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -21886,7 +21886,7 @@ prevSplit: 16"]
 	3265 -> 3282
 	3283 [label="
 id: 3283
-attribute: 02
+attribute: 2
 entropy: 1.4591479170272446
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22007,7 +22007,7 @@ prevSplit: 16"]
 	3283 -> 3300
 	3301 [label="
 id: 3301
-attribute: 03
+attribute: 3
 entropy: 1.9219280948873623
 samples: 5
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22136,7 +22136,7 @@ prevSplit: 3"]
 	3094 -> 3319
 	3320 [label="
 id: 3320
-attribute: 04
+attribute: 4
 entropy: 1.4591479170272448
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22255,7 +22255,7 @@ prevSplit: 16"]
 	3320 -> 3337
 	3338 [label="
 id: 3338
-attribute: 02
+attribute: 2
 entropy: 1.5
 samples: 4
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22374,7 +22374,7 @@ prevSplit: 16"]
 	3338 -> 3355
 	3356 [label="
 id: 3356
-attribute: 04
+attribute: 4
 entropy: 2.251629167387823
 samples: 6
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22497,7 +22497,7 @@ prevSplit: 16"]
 	3356 -> 3373
 	3374 [label="
 id: 3374
-attribute: 02
+attribute: 2
 entropy: 0.9182958340544896
 samples: 3
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22614,7 +22614,7 @@ prevSplit: 16"]
 	3374 -> 3391
 	3392 [label="
 id: 3392
-attribute: 44
+attribute: 36
 entropy: 1.6577427265048887
 samples: 9
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22741,7 +22741,7 @@ prevSplit: 16"]
 	3392 -> 3409
 	3410 [label="
 id: 3410
-attribute: 45
+attribute: 37
 entropy: 1.5546097612655667
 samples: 15
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -22874,7 +22874,7 @@ prevSplit: 16"]
 	3410 -> 3427
 	3428 [label="
 id: 3428
-attribute: 03
+attribute: 3
 entropy: 0.8683927290103626
 samples: 16
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23003,7 +23003,7 @@ prevSplit: 16"]
 	3428 -> 3445
 	3446 [label="
 id: 3446
-attribute: 12
+attribute: 10
 entropy: 0.6143694458867569
 samples: 18
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23138,7 +23138,7 @@ prevSplit: 16"]
 	3446 -> 3463
 	3464 [label="
 id: 3464
-attribute: 14
+attribute: 12
 entropy: 1.0957952550009338
 samples: 11
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23267,7 +23267,7 @@ prevSplit: 16"]
 	3464 -> 3481
 	3482 [label="
 id: 3482
-attribute: 25
+attribute: 21
 entropy: 1.4056390622295662
 samples: 16
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23388,7 +23388,7 @@ prevSplit: 16"]
 	3482 -> 3499
 	3500 [label="
 id: 3500
-attribute: 14
+attribute: 12
 entropy: 0.8112781244591328
 samples: 8
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23507,7 +23507,7 @@ prevSplit: 16"]
 	3500 -> 3517
 	3518 [label="
 id: 3518
-attribute: 15
+attribute: 13
 entropy: 1.5219280948873621
 samples: 10
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23630,7 +23630,7 @@ prevSplit: 16"]
 	3518 -> 3535
 	3536 [label="
 id: 3536
-attribute: 53
+attribute: 43
 entropy: 2.021782221599798
 samples: 16
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23639,7 +23639,7 @@ classCount: {0: 7, 8: 2, 6: 4, 1: 2, 4: 1}"]
 	3094 -> 3536
 	3537 [label="
 id: 3537
-attribute: 02
+attribute: 2
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -23848,7 +23848,7 @@ prevSplit: 13"]
 	3536 -> 3567
 	3568 [label="
 id: 3568
-attribute: 03
+attribute: 3
 entropy: 1.0
 samples: 2
 classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
