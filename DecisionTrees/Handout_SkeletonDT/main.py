@@ -13,36 +13,22 @@ def main():
 
     testFeatures = digits.data[split:]
     trainingLabels = digits.target[:split]
-    count = {}
-    for l in trainingLabels:
-        if l in count:
-            count[l] += 1
-        else:
-            count[l] = 1
-
-    print("**** COUNT ****")
-    print(count)
     testLabels = digits.target[split:]
     id3 = ID3.ID3DecisionTreeClassifier()
     classes = list(range(0, 10))
-    print(classes)
-    print(trainingFeatures)
     attributes = {}
-    # for row in range(8):
-    for col in range(64):
-        attributes[col] = list(range(17))
-    print(attributes)
+    #for index in range(64):
+    #    attributes[index] = list(range(0, 17))
+
+    attributes["dark"] = list(range(0, 5))
+    attributes["grey"] = list(range(5, 10))
+    attributes["light"] = list((range(10, 17)))
 
     myTree = id3.fit(trainingFeatures, trainingLabels, attributes, classes)
-    print('\n ** myTree **')
-    print(myTree)
     plot = id3.makeDotData()
     plot.render("testTree")
     predicted = id3.predict(testFeatures, myTree)
-
-
-    print('\n PREDICTED')
-    for p in predicted:
-        print(p)
-
+    print(predicted)
+    print(metrics.classification_report(testLabels, predicted))
+    print(metrics.confusion_matrix(testLabels, predicted))
 if __name__ == "__main__": main()
