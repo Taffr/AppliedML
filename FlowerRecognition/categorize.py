@@ -9,19 +9,18 @@ import random
 import shutil
 
 # The machine name
-unix = True
+vilde = True
 
 # To create the same dataset
 random.seed(0)
 
 # Here write the path to your dataset
-if unix:
-    base = '/home/simon/git/AppliedML/'
+if vilde:
+    base = '/home/simon/git/'
 else:
     base = '/Users/pierre/Documents/'
-original_dataset_dir = os.path.join(base, 'FlowerRecognition/flowers-recognition/flowers')
-print(original_dataset_dir)
-dataset = os.path.join(base, 'FlowerRecognition/datasets/flowers_split')
+original_dataset_dir = os.path.join(base, 'AppliedML/FlowerRecognition/flowers-recognition/flowers')
+dataset = os.path.join(base, 'AppliedML/FlowerRecognition/datasets/flowers_split')
 
 train_dir = os.path.join(dataset, 'train')
 validation_dir = os.path.join(dataset, 'validation')
@@ -52,7 +51,6 @@ print(len(test_images))
 for image, label in train_images:
     src = os.path.join(original_dataset_dir, label, image)
     dst = os.path.join(train_dir, label, image)
-    print(dst)
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     shutil.copyfile(src, dst)
 
