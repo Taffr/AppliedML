@@ -17,35 +17,6 @@ testGenerator = testDataGen.flow_from_directory(
     batch_size=1,
     class_mode="categorical")
 
-
-predict = model.predict_generator(
-    testGenerator,
-    steps=866
-)
-
-print(predict)
-
-result = []
-for p in predict:
-    max = -1
-    max_index = -1
-    for i in range(len(p)):
-       if p[i] > max:
-        max_index = i
-        max = p[i]
-    result.append(max_index)
-
-print(result)
-
-y_true = testGenerator.classes
-print('** y_true **')
-print(y_true)
-
-
-print()
-print(len(y_true))
-print(len(result))
-print(metrics.classification_report(y_true, result))
-# print("Confusion matrix:\n%s"
-#       % metrics.confusion_matrix(testLabels, predicted))
-
+loss, acc = model.evaluate_generator(testGenerator, steps= 866, verbose=0)
+print(loss)
+print(acc)
