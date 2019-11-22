@@ -60,7 +60,6 @@ history = model.fit_generator(
     validation_steps=50)
 
 pickle.dump(history, open('history_aug.p', 'wb'))
-
 model.save('flower_classification_model_aug.h5')
 
 acc = history.history["acc"]

@@ -30,12 +30,12 @@ epochs = 30
 
 def extract_features(directory, sample_count):
     features = np.zeros(shape=(sample_count, 3, 3, 2048))
-    labels = np.zeros(shape=(sample_count))
+    labels = np.zeros(shape=(sample_count, 5))
     generator = datagen.flow_from_directory(
         directory,
         target_size=(150, 150),
         batch_size=batch_size,
-        class_mode='binary'
+        class_mode='categorical'
     )
     i = 0
     for inputs_batch, labels_batch in generator:
@@ -43,8 +43,8 @@ def extract_features(directory, sample_count):
         features[i * batch_size : (i + 1) * batch_size] = features_batch
         labels[i * batch_size : (i + 1) * batch_size] = labels_batch
         i += 1
-        if (i % 25 == 0):
-            print(i)
+        # if (i % 25 == 0):
+        #     print(i)
         if i * batch_size >= sample_count:
             break
     return features, labels
@@ -65,12 +65,14 @@ train_features = pickle.load(open('train_features.p', 'rb'))
 train_labels = pickle.load(open('train_labels.p', 'rb'))
 validation_features = pickle.load(open('validation_features.p', 'rb'))
 validation_labels = pickle.load(open('validation_labels.p', 'rb'))
-test_features = pickle.load(open('test_features.p', 'rb'))
-test_labels = pickle.load(open('test_labels.p', 'rb'))
 
 train_features = np.reshape(train_features, (n_train, 3 * 3 * 2048))
 validation_features = np.reshape(validation_features, (n_validation, 3 * 3 * 2048))
-test_features = np.reshape(test_features, (n_test, 3 * 3 * 2048))
+
+print(train_features.shape)
+print(train_labels.shape)
+print(validation_features.shape)
+print(validation_labels.shape)
 
 
 model = models.Sequential()
@@ -80,8 +82,8 @@ model.add(layers.Dense(5, activation='softmax'))
 
 model.compile(loss="categorical_crossentropy", optimizer="rmsprop", metrics=["acc"])
 
-train_labels = to_categorical(train_labels)
-validation_labels = to_categorical(validation_labels)
+# train_labels = to_categorical(train_labels)
+# validation_labels = to_categorical(validation_labels)
 
 # history = model.fit(
 #     train_features,
@@ -117,3 +119,18 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
+
+
+test_features = pickle.load(open('test_features.p', 'rb'))
+test_labels = pickle.load(open('test_labels.p', 'rb'))
+# test_features = to_categorical(test_features)
+test_features = np.reshape(test_features, (n_test, 3 * 3 * 2048))
+print(test_features.shape)
+print(train_features.shape)
+
+
+# model.predict(test_features, batch_size=1, verbose=0)
+loss, acc = model.evaluate(test_features, test_labels, batch_size=1, verbose=0)
+
+print('loss: ', loss)
+print('acc: ', acc)
