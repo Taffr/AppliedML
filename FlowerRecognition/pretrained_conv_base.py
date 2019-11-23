@@ -134,3 +134,20 @@ loss, acc = model.evaluate(test_features, test_labels, batch_size=1, verbose=0)
 
 print('loss: ', loss)
 print('acc: ', acc)
+
+y_pred = model.predict(test_features, batch_size=1, verbose=0);
+
+# print(y_pred)
+
+y = [np.argmax(n) for n in y_pred]
+labels = [np.argmax(n) for n in test_labels]
+# print(y)
+# print(test_labels)
+
+# print(y_pred)
+# print(y)
+# print(labels)
+print('\n*** Confusion matrix ***')
+print(metrics.confusion_matrix(y, labels))
+print('\n*** Classification report ***')
+print(metrics.classification_report(y, labels))

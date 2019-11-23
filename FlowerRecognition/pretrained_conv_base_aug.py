@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 conv_base = InceptionV3(weights='imagenet', # specifies which weight checkpoint to initialize the model from
                         include_top=False, # should not include the densely-connected classifier on top of the network.
                         input_shape=(150, 150, 3))
-
+conv_base.trainable=False
 
 model = models.Sequential()
 model.add(conv_base)
