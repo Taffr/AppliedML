@@ -15,7 +15,9 @@ def read_glove_embeddings(file_path):
         for line in glove:
             values = line.strip().split()
             word = values[0]
-            embeddings[word] = np.array(values[1:])
+            # coefs = np.array(values[1:])
+            coefs = np.asarray(values[1:], dtype='float32')
+            embeddings[word] = coefs
 
         glove.close()
         pickle.dump(embeddings, open(save_file_path, 'wb'))
