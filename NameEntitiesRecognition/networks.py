@@ -1,8 +1,9 @@
 import os
 import preprocessing
 import pickle
+import numpy as np
 from keras import models, layers
-from keras.layers import LSTM, Bidirectional, SimpleRNN, Dense
+from keras.layers import LSTM, Bidirectional, SimpleRNN, Dense, Dropout
 import matplotlib.pyplot as plt
 from keras.models import load_model
 
@@ -28,6 +29,7 @@ def build_network(word_count, pos_count, embedding_matrix, network_type, use_bid
     else:
         model.add(network)
 
+    model.add(Dropout(0.2))
     model.add(Dense(pos_count + 2, activation='softmax'))
 
     return model
@@ -76,19 +78,19 @@ def save_history_metrics(history, save_file_base_path):
 
 
 if __name__ == '__main__':
-    model_base_path = 'recurrent_rnn_no-bidirectional'
-    X_train, Y_train, words, pos, embedding_matrix, word_to_index, pos_to_index = preprocessing.preprocess()
+    model_base_path = 'recurrent_lstm_with-bidirectional_5_epochs'
+    X_train, Y_train, words, pos, embedding_matrix, word_to_index, pos_to_index, word_indicies, pos_indicies = preprocessing.preprocess()
 
-    if os.path.isfile(model_base_path + '.h5'):
+    if os.path.isfile(model_base_path + '.h5') and os.path.isfile('pickled/' + model_base_path + '_history.p'):
         model = load_model(model_base_path + '.h5')
         history = pickle.load(open('pickled/' + model_base_path + '_history.p', 'rb'))
     else:
 
         # model = load_model('flower_classification_model_overfit.h5')
 
-        model = build_network(len(words), len(pos), embedding_matrix, 'rnn', False)
+        model = build_network(len(words), len(pos), embedding_matrix, 'lstm', True)
 
-        history = fit_model(model, X_train, Y_train)
+        history = fit_model(model, X_train, Y_train, 5)
 
         pickle.dump(history, open('pickled/' + model_base_path + '_history.p', 'wb'))
         model.save(model_base_path + '.h5')
@@ -107,6 +109,26 @@ if __name__ == '__main__':
     print('test_loss: ', test_loss)
     print('test_acc: ', test_acc)
 
+    pos_predictions = model.predict(X_test_seq)
+    pos_pred_num = []
+    for sent_nbr, sent_pos_predictions in enumerate(pos_predictions):
+        pos_pred_num += [sent_pos_predictions[-len(X_test[sent_nbr]):]]
+
+    pos_pred = []
+    for sentence in pos_pred_num:
+        pos_pred_idx = list(map(np.argmax, sentence))
+        pos_pred_cat = list(map(lambda x: pos_indicies.get(x, 1), pos_pred_idx))
+        # pos_pred_cat = list(map(pos_indicies.get(), pos_pred_idx))
+        pos_pred += [pos_pred_cat]
+
+    f_out = open('prediction.txt', 'w')
+
+    for sentence in zip(X_test, Y_test, pos_pred):
+        # print(sentence)
+        for i in range(len(sentence[0])):
+            f_out.write("\n" + str(sentence[0][i]) + " " + str(sentence[1][i]) + ' ' + str(sentence[2][i]))
+
+    f_out.close()
 
 
 

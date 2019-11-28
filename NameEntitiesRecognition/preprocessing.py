@@ -61,7 +61,7 @@ def create_index_maps(words, pos):
     word_to_index = {v: k for k, v in word_indices.items()}
     pos_to_index = {v: k for k, v in pos_indices.items()}
 
-    return word_to_index, pos_to_index
+    return word_to_index, pos_to_index, word_indices, pos_indices
 
 def build_embedding_matrix(words, embeddings, word_to_index):
     embedding_matrix = np.random.uniform(-0.05, 0.05, (len(words) + 2, EMBEDDING_DIM))
@@ -95,12 +95,12 @@ def convert_to_sequences(X_train, Y_train, word_to_index, pos_to_index):
 
 
 def to_index(X, to_index_dict):
-    indicies = []
+    indices = []
     for x in X:
         x_idx = list(map(lambda x: to_index_dict.get(x, 1), x))
-        indicies += [x_idx]
+        indices += [x_idx]
 
-    return indicies
+    return indices
 
 
 def preprocess():
@@ -110,13 +110,13 @@ def preprocess():
     embeddings = embeddings_parser.read_glove_embeddings('./data/glove.6B.100d.txt')
     words = combine_train_and_embeddings_words(unique_train, embeddings)
 
-    word_to_index, pos_to_index = create_index_maps(words, unique_pos)
+    word_to_index, pos_to_index, word_indices, pos_indices = create_index_maps(words, unique_pos)
 
     embedding_matrix = build_embedding_matrix(words, embeddings, word_to_index)
 
     X_sequence, Y_sequence = convert_to_sequences(X_train, Y_train, word_to_index, pos_to_index)
 
-    return X_sequence, Y_sequence, words, unique_pos, embedding_matrix, word_to_index, pos_to_index
+    return X_sequence, Y_sequence, words, unique_pos, embedding_matrix, word_to_index, pos_to_index, word_indices, pos_indices
 
 
 
