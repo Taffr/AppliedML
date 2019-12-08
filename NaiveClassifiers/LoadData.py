@@ -34,7 +34,7 @@ trainingFeatures = digits.data[:split]
 testFeatures = digits.data[split:]
 trainingLabels = digits.target[:split]
 testLabels = digits.target[split:]
-trainingFeatures, testFeatures = modifyDigits(trainingFeatures, testFeatures)
+#trainingFeatures, testFeatures = modifyDigits(trainingFeatures, testFeatures)
 print(trainingFeatures)
 ncc = NCC.NCC()
 ncc.fit(trainingFeatures, trainingLabels)

@@ -9,19 +9,23 @@ class NCC:
 
     def fit(self, features, target):
         self.averages = dict()
+        classCounter = dict()
         for classification in target:
             self.averages[classification] = 0
+            classCounter[classification] = 0
 
         for row in list(zip(features, target)):
             for i in range(len(row[0])):
                 try:
+                    classCounter[row[1]] += 1
                     self.averages[row[1]][i] += row[0][i]
                 except:
                     self.averages[row[1]] = np.zeros(len(row[0]))
                     self.averages[row[1]][i] = row[0][i]
                     print(row[0][i])
         for key in self.averages.keys():
-            self.averages[key] = (1/len(features)) * self.averages[key]
+            self.averages[key] = (1/classCounter[key]) * self.averages[key]
+            print(self.averages)
 
 
     def predict(self, features):
