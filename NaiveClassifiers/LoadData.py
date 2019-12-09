@@ -42,11 +42,11 @@ targetValues = list(range(0, 10))
 for i in range(64):
     featureValues[i] = [1.0 * x for x in range(0, 17)]
 
-print(targetValues)
-print(featureValues)
+#print(targetValues)
+#print(featureValues)
 ncc.fit(trainingFeatures, trainingLabels, featureValues, targetValues)
 preds = ncc.predict(testFeatures)
-
+print(preds)
 print(metrics.classification_report(testLabels, preds))
 print(metrics.confusion_matrix(testLabels, preds))
 
