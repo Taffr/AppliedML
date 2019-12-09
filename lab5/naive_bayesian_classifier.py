@@ -9,13 +9,13 @@ class NaiveBayesianClassifier:
 
     def fit(self, train_features, train_labels):
         nbr_features = len(train_features)
-        digit_count = np.zeros(10, dtype=int)
         pixel_count_per_digit = {}
+
+        self.class_probabilities = self.__class_probabilities(train_labels)
 
         for digit_i in range(len(train_features)):
             digit = train_features[digit_i]
             label = train_labels[digit_i]
-            digit_count[label] += 1
 
             if label not in pixel_count_per_digit:
                 pixel_count_per_digit[label] = np.zeros((self.dimension, self.n_features), dtype=int)
@@ -27,11 +27,25 @@ class NaiveBayesianClassifier:
         pixel_probabilities = {}
         digit_probabilities = np.zeros(10)
         for digit_i in range(10):
-            pixel_probabilities[digit_i] = np.divide(pixel_count_per_digit[digit_i], digit_count[digit_i])
-            digit_probabilities[digit_i] = digit_count[digit_i] / nbr_features
+            pixel_probabilities[digit_i] = np.divide(pixel_count_per_digit[digit_i], self.class_probabilities[digit_i])
+            digit_probabilities[digit_i] = self.class_probabilities[digit_i] / nbr_features
 
         self.pixel_probabilities = pixel_probabilities
-        self.digit_probabilities = digit_probabilities
+
+
+    def __class_probabilities(self, train_labels):
+        class_probabilities = {}
+        for label in train_labels:
+            if label in class_probabilities:
+                class_probabilities[label] += 1
+            else:
+                class_probabilities[label] = 1
+
+        n_total = len(train_labels)
+        for label in class_probabilities:
+            class_probabilities[label] /= n_total
+
+        return class_probabilities
 
 
     def predict(self, test_features):
@@ -51,7 +65,7 @@ class NaiveBayesianClassifier:
                 for pixel_i in range(self.dimension):
                     feature_pixel = feature[pixel_i]
                     prob *= self.pixel_probabilities[digit_i][pixel_i][int(feature_pixel)]
-                prob *= self.digit_probabilities[digit_i]
+                prob *= self.class_probabilities[digit_i]
                 probabilities[digit_i] = prob
 
             y_pred[feature_i] = np.argmax(probabilities)
