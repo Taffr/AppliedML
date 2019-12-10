@@ -76,8 +76,8 @@ class NBC:
                     pClasses[classProb[0]] *= (classProb[1] + epsilon)
 
             for i in range(len(pClasses)):
-                pClasses[i] = pClasses[i] / (pClasses[i] + self.classProbs[i])
-            print(pClasses)
+                pClasses[i] *= self.classProbs[i]
+                pClasses[i] = pClasses[i] / (pClasses[i] + self.classProbs[i])  # Normalization
             predictions[counter] = (np.argmax(pClasses))
             counter += 1
         return predictions

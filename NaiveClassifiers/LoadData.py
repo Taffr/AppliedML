@@ -28,7 +28,7 @@ def modifyDigits(training, test):
     return np.asarray(modifiedData), np.asarray(modifiedTestData)
 
 #import NearestCentroidClassifier as NCC
-import NaiveBayesianClassifier as NBC
+import GaussianNaiveClassifier as GNC
 digits = datasets.load_digits()
 split = int(0.7 * len(digits.data))
 trainingFeatures = digits.data[:split]
@@ -36,17 +36,14 @@ testFeatures = digits.data[split:]
 trainingLabels = digits.target[:split]
 testLabels = digits.target[split:]
 #trainingFeatures, testFeatures = modifyDigits(trainingFeatures, testFeatures)
-ncc = NBC.NBC()
+classifier = GNC.GNC()
 featureValues = dict()
 targetValues = list(range(0, 10))
 for i in range(64):
     featureValues[i] = [1.0 * x for x in range(0, 17)]
-
-#print(targetValues)
-#print(featureValues)
-ncc.fit(trainingFeatures, trainingLabels, featureValues, targetValues)
-preds = ncc.predict(testFeatures)
-print(preds)
+classifier.fit(trainingFeatures, trainingLabels, featureValues, targetValues)
+preds = classifier.predict(testFeatures)
+#print(preds)
 print(metrics.classification_report(testLabels, preds))
 print(metrics.confusion_matrix(testLabels, preds))
 
