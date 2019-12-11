@@ -28,6 +28,7 @@ class MNISTData :
 
         self.train_features, self.test_features, self.train_labels, self.test_labels = train_test_split(self.x, self.y, test_size=0.3,
                                                                                     random_state=42)
+
         self.train_normalised = self.train_features.reshape(3500, 400) / 255.0
         self.test_normalised = self.test_features.reshape(1500, 400) / 255.0
 

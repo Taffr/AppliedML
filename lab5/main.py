@@ -3,6 +3,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.naive_bayes import GaussianNB
 from nearest_centroid_classifier import NearestCentroidClassifier
 from naive_bayesian_classifier import NaiveBayesianClassifier
+from gaussian_naive_bayesian import GaussianNaiveBayesian
 import preprocess_digits_dataset
 import MNIST
 import Main_MNIST
@@ -36,25 +37,23 @@ def run_gaussian_nb():
     )
 
 def run_ncc():
+    ncc = NearestCentroidClassifier()
+
     train_features, train_labels, test_features, test_labels = preprocess_digits_dataset.digits_dataset()
-    ncc_digits = NearestCentroidClassifier()
-    ncc_digits.fit(train_features, train_labels)
-    ncc_digits.predict(test_features)
-    digits_clf_report, digits_conf_matrix = ncc_digits.create_reports(test_labels)
+    ncc.fit(train_features, train_labels)
+    ncc.predict(test_features)
+    digits_clf_report, digits_conf_matrix = ncc.create_reports(test_labels)
 
-    ncc_reduced_digits = NearestCentroidClassifier()
     train_features, train_labels, test_features, test_labels = preprocess_digits_dataset.reduce_digits_dataset()
-    ncc_reduced_digits.fit(train_features, train_labels)
-    ncc_reduced_digits.predict(test_features)
-    reduced_digits_clf_report, reduced_digits_conf_matrix = ncc_reduced_digits.create_reports(test_labels)
+    ncc.fit(train_features, train_labels)
+    ncc.predict(test_features)
+    reduced_digits_clf_report, reduced_digits_conf_matrix = ncc.create_reports(test_labels)
 
-
-    ncc_mnist = NearestCentroidClassifier()
     mnist = MNIST.MNISTData('MNIST_Light/*/*.png')
     train_features, test_features, train_labels, test_labels = mnist.get_data()
-    ncc_mnist.fit(train_features, train_labels)
-    ncc_mnist.predict(test_features)
-    mnist_clf_report, mnist_conf_matrix = ncc_mnist.create_reports(test_labels)
+    ncc.fit(train_features, train_labels)
+    ncc.predict(test_features)
+    mnist_clf_report, mnist_conf_matrix = ncc.create_reports(test_labels)
 
     write_reports_to_file(
         'results/nearest_centroid_reports.txt',
@@ -67,25 +66,58 @@ def run_ncc():
     )
 
 def run_nbc():
+    nbc = NaiveBayesianClassifier()
+
     train_features, train_labels, test_features, test_labels = preprocess_digits_dataset.digits_dataset()
-    nbc_digits = NaiveBayesianClassifier(64, 17)
-    nbc_digits.fit(train_features, train_labels)
-    nbc_digits.predict(test_features)
-    digits_clf_report, digits_conf_matrix = nbc_digits.create_reports(test_labels)
+    nbc.fit(train_features, train_labels)
+    nbc.predict(test_features)
+    digits_clf_report, digits_conf_matrix = nbc.create_reports(test_labels)
 
     train_features, train_labels, test_features, test_labels = preprocess_digits_dataset.reduce_digits_dataset()
-    nbc_reduced_digits = NaiveBayesianClassifier(64, 3)
-    nbc_reduced_digits.fit(train_features, train_labels)
-    nbc_reduced_digits.predict(test_features)
-    reduced_digits_clf_report, reduced_digits_conf_matrix = nbc_reduced_digits.create_reports(test_labels)
+    nbc.fit(train_features, train_labels)
+    nbc.predict(test_features)
+    reduced_digits_clf_report, reduced_digits_conf_matrix = nbc.create_reports(test_labels)
+
 
     write_reports_to_file(
         'results/naive_bayesian_reports.txt',
         digits_clf_report,
         digits_conf_matrix,
         reduced_digits_clf_report,
-        reduced_digits_conf_matrix,
+        reduced_digits_conf_matrix
     )
+
+
+def run_gnb():
+    nbc = GaussianNaiveBayesian()
+
+    # train_features, train_labels, test_features, test_labels = preprocess_digits_dataset.digits_dataset()
+    # nbc.fit(train_features, train_labels)
+    # nbc.predict(test_features)
+    # digits_clf_report, digits_conf_matrix = nbc.create_reports(test_labels)
+    #
+    # train_features, train_labels, test_features, test_labels = preprocess_digits_dataset.reduce_digits_dataset()
+    # nbc.fit(train_features, train_labels)
+    # nbc.predict(test_features)
+    # reduced_digits_clf_report, reduced_digits_conf_matrix = nbc.create_reports(test_labels)
+    #
+    mnist = MNIST.MNISTData('MNIST_Light/*/*.png')
+    train_features, test_features, train_labels, test_labels = mnist.get_data()
+    nbc.fit(train_features, train_labels)
+    nbc.predict(test_features)
+    mnist_clf_report, mnist_conf_matrix = nbc.create_reports(test_labels)
+
+    print(mnist_clf_report)
+
+    # write_reports_to_file(
+    #     'results/gaussian_naive_bayesian_reports.txt',
+    #     digits_clf_report,
+    #     digits_conf_matrix,
+    #     reduced_digits_clf_report,
+    #     reduced_digits_conf_matrix,
+    #     mnist_clf_report,
+    #     mnist_conf_matrix
+    # )
 
 
 def write_reports_to_file(path,
@@ -96,6 +128,7 @@ def write_reports_to_file(path,
                           mnist_clf_report=None,
                           mnist_conf_matrix=None):
     f_out = open(path, 'w')
+
     f_out.write('********** Digits **********\n')
     f_out.write('Classification report\n')
     f_out.write(digits_clf_report)
@@ -117,6 +150,7 @@ def write_reports_to_file(path,
 
 
 if __name__ == '__main__':
-    run_gaussian_nb()
-    run_ncc()
-    run_nbc()
+    # run_gaussian_nb()
+    # run_ncc()
+    # run_nbc()
+    run_gnb()
