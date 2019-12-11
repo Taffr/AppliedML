@@ -5,6 +5,7 @@ import numpy as np
 
 class GNC:
     def fit(self, features, target, featureValues, targetValues):
+        #self.epsilon = 1e-9 * np.var(features, axis=0) .max()
         self.dataset = zip(features, target)
         self.features = features
         self.targetValues = targetValues
@@ -42,9 +43,11 @@ class GNC:
         return summaries
 
     def __gaussianProb(self, x, mean, std):
-        epsilon = 0.0001
-        expon = exp((-1 / 2) * ((x - mean) / (std + epsilon)) ** 2)
-        return (1 / ((std + epsilon) * sqrt(2 * pi))) * expon
+        epsilon = 0.058 # 0.058 curr best
+        std = std + epsilon
+        expon = exp((-1 / 2) * ((x - mean) / std) ** 2)
+        prob = (1 / (std * sqrt(2 * pi))) * expon
+        return prob
 
     def __probabilities(self, summaries, row):
         totalRows = len(self.features)
